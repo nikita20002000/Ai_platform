@@ -1,0 +1,74 @@
+body {
+    background-color: #072A40;
+}
+
+.line {
+    position: relative;
+    left: 0;
+    right: 0;
+    border-top: 2px solid #FFFFFF;
+}
+
+.heading {
+    width: 80%;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.brand-name {
+    margin: auto;
+}
+
+h1 {
+    margin-left: 20px;
+    font-size: 4vw;
+    color: #FFFFFF;
+    font-family: "Proxima Nova";
+    letter-spacing: 8px;
+    font-weight: bold;
+}
+
+.card {
+    background-color: #274659;
+}
+
+
+
+@media screen and (max-width: 540px) {
+    .divider{
+        height: 4rem;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 541px) {
+    .divider{
+        height: 6rem;
+    }
+}
+@media screen and (max-width: 1000px) and (min-width: 769px) {
+    .divider {
+        height: 6rem;
+    }
+}
+
+@media screen and (max-width: 4000px) and (min-width: 1001px)  {
+    .divider {
+        height: 6rem;
+    }
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#page-wrapper {
+    position: relative;
+    z-index: 1000;
+    height: 100%;
+}
