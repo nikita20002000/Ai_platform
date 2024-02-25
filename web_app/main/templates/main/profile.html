@@ -8,5 +8,13 @@
 </head>
 <body>
     ЭТО ПРОФИЛЬ
+    <h4>{{ user.username }}</h4>
+    <form method="post" action="{% url 'logout' %}?next=/profile">
+    {% csrf_token %}
+        <button onclick="location.href='{% url 'logout' %}?next=/profile'">
+            Выйти из аккаунта
+        </button>
+</form>
+
 </body>
 </html>

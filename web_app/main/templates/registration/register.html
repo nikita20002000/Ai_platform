@@ -1,5 +1,5 @@
-{% load static %}
 <!doctype html>
+{% load static %}
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -37,28 +37,40 @@
                                 <h2 class="fw-bold mb-2 text-uppercase">Регистрация</h2>
 
                                 <p class="text-white-50 mb-3"></p>
+
                                   <form method="post">
                                       {% csrf_token %}
-                                        <div class="form-outline form-white mb-2">
-                                            <input type="name" name="name" id="typeNameX" placeholder="Введите ваше имя" class="form-control form-control-lg" />
-                                            <label class="form-label" for="typeNameX">Имя</label>
-                                        </div>
+<!--                                        <div class="form-outline form-white mb-2">-->
+<!--                                            <input type="name" name="name" id="typeNameX" placeholder="Введите ваше имя" class="form-control form-control-lg" />-->
+<!--                                            <label class="form-label" for="typeNameX">Имя</label>-->
+<!--                                        </div>-->
 
+<!--                                        <div class="form-outline form-white mb-2">-->
+<!--                                            <input type="surname" required name="surname" id="typeSurnameX" placeholder="Введите вашу фамилию" class="form-control form-control-lg" />-->
+<!--                                            <label class="form-label" for="typeSurnameX">Фамилия</label>-->
+<!--                                        </div>-->
                                         <div class="form-outline form-white mb-2">
-                                            <input type="surname" required name="surname" id="typeSurnameX" placeholder="Введите вашу фамилию" class="form-control form-control-lg" />
-                                            <label class="form-label" for="typeSurnameX">Фамилия</label>
+                                            <input type="text"  name="username" id="typeSurnameX" placeholder="Введите имя пользователя" class="form-control form-control-lg" />
+                                            <label class="form-label" for="typeSurnameX">Имя пользователя</label>
                                         </div>
                                         <div class="form-outline form-white mb-2">
-                                            <input type="email" required name="email" id="typeEmailX" placeholder="Введите адрес электронной почты" class="form-control form-control-lg" />
+                                            <input type="email"  name="email" id="typeEmailX" placeholder="Введите адрес электронной почты" class="form-control form-control-lg" />
                                             <label class="form-label" for="typeEmailX">Адрес электронной почты</label>
                                         </div>
                                         <div class="form-outline form-white mb-2">
-                                            <input id="password" type="password" required name="password" id="typePasswordX" placeholder="Введите пароль" class="form-control form-control-lg" />
+                                            <input type="password"  name="password1" id="typePasswordX" placeholder="Введите пароль" class="form-control form-control-lg" />
                                             <label class="form-label" for="typePasswordX">Пароль</label>
                                         </div>
                                         <div class="form-outline form-white mb-2">
-                                            <input id="password-check" type="password-check" name="password" id="typeCheckPasswordX" placeholder="Подтвердите пароль" class="form-control form-control-lg" />
+                                            <input type="password" name="password2" id="typeCheckPasswordX" placeholder="Подтвердите пароль" class="form-control form-control-lg" />
                                             <label class="form-label" for="typeCheckPasswordX">Подтверждение пароля</label>
+                                        </div>
+
+                                        <div class="text">
+                                            <label class="anim">
+                                                <input type="checkbox", class="checkbox-row" >
+                                                <span>я согласен</span>
+                                            </label>
                                         </div>
 
 
