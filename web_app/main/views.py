@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormVi
 from .forms import RegisterForm
 
 
+@login_required
 def index(request):
     return render(request, 'main/index.html')
 
