@@ -1,0 +1,28 @@
+
+{% if request.user.is_authenticated %}
+    <p>{{request.user}}</p>
+{% else %}
+    <p>Мы щас не зареганы</p>
+{% endif %}
+
+
+ЭТО ТАСК ЛИСТ
+<a href="{% url 'to_do_list:task-create' %}">ДОБАВИТЬ ЗАДАЧУ</a>
+<table>
+    <tr>
+        <th>
+            Item
+        </th>
+        <th></th>
+    </tr>
+    {% for task in tasks %}
+    <tr>
+        <td>{{ task.title }}</td>
+        <td><a href="{% url 'to_do_list:task' task.id %}">Посмотреть</a></td>
+        <td><a href="{% url 'to_do_list:task-update' task.id %}">Изменить</a></td>
+        <td><a href="{% url 'to_do_list:task-delete' task.id %}">Удалить</a></td>
+    </tr>
+    {% empty %}
+        <h3>СПИСОК ПУСТ</h3>
+    {% endfor %}
+</table>
