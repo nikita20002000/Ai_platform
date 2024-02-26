@@ -21,6 +21,10 @@ footer {
 
 }
 
+.dropdown-menu {
+    background-color: rgba(39, 70, 89, 1);
+}
+
 .widget {
     background-color: rgba(39, 70, 89, 0.8);
 }
@@ -42,3 +46,18 @@ span, p, h6, h4 {
     font-family: "Proxima Nova";
     color: #FFFFFF;
 }
+
+.navbar-left span {
+    font-family: "Proxima Nova";
+    color: #FFFFFF;
+}
+
+.dropdown-menu a {
+    font-family: "Proxima Nova";
+    color: #FFFFFF;
+}
+
+.fas {
+    color: #FFFFFF;
+}
+

@@ -3,7 +3,7 @@ from . import views
 from .views import RegisterView, WebPasswordResetView, WebPasswordResetDone
 
 
-app_name = "web"
+app_name = "main"
 
 urlpatterns = [
     path('', views.index, name='home'),

@@ -134,7 +134,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "main/static",
 ]
 
-LOGIN_REDIRECT_URL = reverse_lazy("main:profile")
+LOGIN_REDIRECT_URL = reverse_lazy("main:home")
 
 
 EMAIL_HOST = 'smtp.yandex.ru'
