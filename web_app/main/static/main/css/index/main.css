@@ -50,8 +50,19 @@ span, p, h6, h4 {
 .navbar-left span {
     font-family: "Proxima Nova";
     color: #FFFFFF;
+
 }
 
+.time-node {
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.navbar-left {
+    border-right: 4px solid #FFFFFF;
+}
 .dropdown-menu a {
     font-family: "Proxima Nova";
     color: #FFFFFF;
