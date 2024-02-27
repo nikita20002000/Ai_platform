@@ -1,9 +1,52 @@
-<h3>TASK FORM </h3>
-<a href="{% url 'to_do_list:task_list' %}">Вернуться назад</a>
+{% extends 'to_do_list/template_to_do_list.html' %}
 
+{% block content %}
+<div class="row-2 justify-content-start mb-5">
+    <a href="{% url 'to_do_list:task_list' %}">
+        <button type="button my-2" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"></path>
+                </svg>
+                Вернуться назад
+        </button>
+    </a>
+</div>
+{% if task %}
+<div class="d-sm-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-2">{{ task.title }}</h3>
+</div>
+{% else %}
+<div class="d-sm-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-2">Добавление новой задачи</h3>
+</div>
+{% endif %}
 
-<form method="post" action="">
+<form method="POST" action="">
     {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="submit">
+    <div class="row">
+        <div class="col-md-12 col-xl-12 mb-4">
+            <div class="widget card shadow border-start-primary py-2">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="id_title" class="form-label">Название задачи</label>
+
+                        <textarea type="text" name="title" class="form-control" id="id_title" placeholder="Введите название задачи...">{{task.title}}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_description" class="form-label">Описание</label>
+                        <textarea type="text" name="description" class="form-control" id="id_description" rows="3" placeholder="Введите описание задачи...">{{task.description}}</textarea>
+                    </div>
+                    {% if task %}
+                    <button class="btn btn-success mt-2 mb-2" type="submit" value="submit">Сохранить изменения</button>
+                    {% else %}
+                    <button class="btn btn-primary mt-2 mb-2" type="submit" value="submit">Добавить задачу</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
+
+
+
+{% endblock %}

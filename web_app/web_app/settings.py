@@ -133,6 +133,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
     BASE_DIR / "main/static",
+    BASE_DIR / "to_do_list/static",
 ]
 
 LOGIN_REDIRECT_URL = reverse_lazy("main:home")
@@ -145,4 +146,4 @@ EMAIL_USE_SSL = True
 
 EMAIL_HOST_USER = 'vertihost@yandex.ru'
 EMAIL_HOST_PASSWORD = 'fupgchljogoulpgb'
-DEFAULT_FROM_EMAIL = 'vertihost@yandex.ru'
+DEFAULT_FROM_EMAIL ='vertihost@yandex.ru'

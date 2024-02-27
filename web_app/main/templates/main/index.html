@@ -38,7 +38,7 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link active" href="{% url 'main:home' %}"><i class="fas fa-tachometer-alt"></i><span>Панель инструментов</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'main:profile' %}"><i class="fas fa-user"></i><span>Профиль</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Table</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'to_do_list:task_list'%}"><i class="fas fa-table"></i><span>Менеджер задач</span></a></li>
 
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -292,7 +292,7 @@
                             </div>
                             <div class=" widget card shadow mb-4">
                                 <div class="card-header widget py-3">
-                                    <h6 class=" fw-bold m-0">Todo List</h6>
+                                    <h6 class=" fw-bold m-0">Менеджер задач</h6>
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <li class="widget list-group-item">
