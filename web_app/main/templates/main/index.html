@@ -292,8 +292,18 @@
                             </div>
                             <div class=" widget card shadow mb-4">
                                 <div class="card-header widget py-3">
-                                    <h6 class=" fw-bold m-0">Менеджер задач</h6>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h6 class=" fw-bold m-0">Менеджер задач</h6>
+                                        </div>
+                                        <div class="col-6 justify-content-end text-end">
+                                            <a href="{% url 'to_do_list:task_list'%}">
+                                                <u><p>Перейти</p></u>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <ul class="list-group list-group-flush">
                                     <li class="widget list-group-item">
                                         <div class="row align-items-center no-gutters">
@@ -332,6 +342,9 @@
                     </div>
                 </div>
             </div>
+            {{ for task in tasks}}
+            {{task.title}}
+            {{endfor}}
             <footer class="sticky-footer">
                 <div class="container my-auto">
                     <div class="text-center my-auto copyright"><span>Copyright © Business AI Platform 2024</span></div>
