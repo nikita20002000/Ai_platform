@@ -33,12 +33,12 @@
         <h6 class=" fw m-0">Список дел</h6>
     </div>
     {% for task in tasks %}
+    {% if task.complete %}
+    {% else %}
     <ul class="list-group list-group-flush">
         <li class="widget list-group-item">
             <div class="row align-items-center no-gutters">
-                {% if task.complete %}
 
-                {% else %}
                 <div class="col me-2">
                     <a href="{% url 'to_do_list:task-update' task.id %}">
                         <div class="row">
@@ -50,16 +50,12 @@
                 <div class="col-auto">
                     <a class="delete-link" href="{% url 'to_do_list:task-delete' task.id %}">&#215;</a>
                 </div>
-                {% endif %}
+
             </div>
         </li>
     </ul>
-    {% empty %}
-    <div class="widget card shadow mb-4">
-        <div class="card-header widget py-3">
-            <h6 class=" fw-bold m-0">У вас нет ни одной задачи</h6>
-        </div>
-    </div>
+
+    {% endif %}
     {% endfor %}
 </div>
 
@@ -83,22 +79,14 @@
                 <div class="col-auto">
                     <a class="delete-link" href="{% url 'to_do_list:task-delete' task.id %}">&#215;</a>
                 </div>
-                {% else %}
-
-                {% endif %}
             </div>
         </li>
 
     </ul>
-    {% endfor %}
-    {% if tasks.complete == 0 %}
-    <div class="widget card shadow mb-4">
-            <div class="card-header widget py-3">
-                <h6 class=" fw-bold m-0">У вас нет ни одной задачи</h6>
-            </div>
-    </div>
     {% endif %}
+    {% endfor %}
 </div>
+
 <script src={% static "to_do_list/js/to_do_list/task_word_end.js" %}></script>
 
 {% endblock content %}
