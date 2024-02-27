@@ -1,10 +1,38 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.list import ListView
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from .forms import RegisterForm
 
+from to_do_list.models import Task
+from to_do_list.views import TaskList
+
+class TaskList(LoginRequiredMixin, ListView):
+    model = Task
+    template_name = 'main/index.html'
+
+    context_object_name = 'tasks'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Передача данных для конкретного пользователя
+        context['tasks'] = context['tasks'].filter(user=self.request.user)
+        context['count'] = context['tasks'].filter(complete=False).count()
+
+        # Логика поиска
+        search_input = self.request.GET.get('search-area') or ''
+
+        if search_input:
+            context['tasks'] = context['tasks'].filter(
+                title__icontains=search_input)
+
+        context['search_input'] = search_input
+
+        return context
 
 @login_required
 def index(request):

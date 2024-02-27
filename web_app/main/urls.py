@@ -1,12 +1,12 @@
 from django.urls import path, include
 from .import views
-from .views import RegisterView, WebPasswordResetView, WebPasswordResetDone
+from .views import RegisterView, WebPasswordResetView, WebPasswordResetDone, TaskList
 
 
 app_name = "main"
 
 urlpatterns = [
-    path('', views.index, name='home'),
+    path('', TaskList.as_view(), name='home'),
     path('profile/', views.profile, name='profile'),
 
 
