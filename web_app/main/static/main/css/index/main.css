@@ -9,12 +9,16 @@ body {
 
 .header {
     background-color: #072A40;
+    border-bottom: 4px solid #FFFFFF;
 }
 
 footer {
     background-color: #072A40;
 }
 
+.menu-left-list {
+
+}
 
 #content {
         background-color: #072A40;
@@ -53,7 +57,7 @@ span, p, h6, h4 {
 
 }
 
-.time-node {
+.time-node, .date-node {
     font-weight: bold;
     font-family: monospace;
     font-size: 16px;
@@ -70,4 +74,28 @@ span, p, h6, h4 {
 
 .fas {
     color: #FFFFFF;
+}
+
+
+
+.accordion-item {
+    background-color: transparent;
+    border: none;
+}
+
+.accordion {
+    background-color: transparent;
+    color: transparent;
+}
+
+.nav-link span {
+    color: rgba(255, 255, 255, 0.58);
+}
+
+.active span {
+    color: #FFFFFF;
+}
+
+.accordion-body {
+    padding: 0;
 }

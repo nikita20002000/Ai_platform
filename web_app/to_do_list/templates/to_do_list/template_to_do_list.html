@@ -36,10 +36,48 @@
                     </div>
                 </a>
                 <hr class="sidebar-divider my-0">
-                <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'main:home' %}"><i class="fas fa-tachometer-alt"></i><span>Панель инструментов</span></a></li>
+                <ul class="navbar-nav menu-left-list text-light mt-5" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link " href="{% url 'main:home' %}"><i class="fas fa-tachometer-alt"></i><span>Панель инструментов</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'main:profile' %}"><i class="fas fa-user"></i><span>Профиль</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'to_do_list:task_list'%}"><i class="fa fa-newspaper-o"></i><span>Лента</span></a></li>
                     <li class="nav-item"><a class="nav-link active" href="{% url 'to_do_list:task_list'%}"><i class="fas fa-table"></i><span>Менеджер задач</span></a></li>
+
+
+                    <li class="nav-item">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <a class="nav-link accordion-but" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="fa fa-shopping-cart"></i><span>Маркетинг</span>
+                                </a>
+                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <a class="nav-link" href="{% url 'to_do_list:task_list'%}"><span>Анализ трендов</span></a>
+                                        <a class="nav-link" href="{% url 'to_do_list:task_list'%}"><span>Анализ продукта</span></a>
+                                        <a class="nav-link" href="{% url 'to_do_list:task_list'%}"><span>Создание тренда</span></a>
+                                        <a class="nav-link" href="{% url 'to_do_list:task_list'%}"><span>AI копирайт</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <a class="nav-link accordion-but" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="fa fa-rub"></i><span>Финансы</span>
+                                </a>
+                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <a class="nav-link" href="{% url 'to_do_list:task_list'%}"><span>Прогнозирование курсов</span></a>
+                                        <a class="nav-link" href="{% url 'to_do_list:task_list'%}"><span>Биржевой анализ</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'to_do_list:task_list'%}"><i class="fa fa-cubes"></i><span>ML аналитика</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'to_do_list:task_list'%}"><i class="fa fa-folder-open"></i><span>Анализ данных</span></a></li>
+
 
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -52,6 +90,12 @@
                         <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
                             <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..."><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
                         </form>
+
+                        <div class="row">
+                            <div class="col-4 time-node" id="time-node"></div>
+                            <div class="col-8 date-node" id="date-node"></div>
+                        </div>
+
                         <ul class="navbar-nav flex-nowrap ms-auto">
                             <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
                                 <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
@@ -175,11 +219,13 @@
        <div class="loader"></div>
     </div>
 
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src={% static "main/js/login-reg/loader.js" %}></script>
     <script src={% static "main/js/main/theme.js" %}></script>
     <script src={% static "to_do_list/js/to_do_list/hello_text.js" %}></script>
+        <script src={% static "main/js/main/date_time.js" %}></script>
 
 </body>
 </html>
