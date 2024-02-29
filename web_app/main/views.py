@@ -5,7 +5,7 @@ from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
-from .forms import RegisterForm
+from .forms import RegisterForm, ImageForm
 
 from to_do_list.models import Task
 from to_do_list.views import TaskList
@@ -52,7 +52,7 @@ class RegisterView(FormView):
     form_class = RegisterForm
     template_name = 'registration/register.html'
 
-    success_url = reverse_lazy("profile")
+    success_url = reverse_lazy("main:profile")
 
     def form_valid(self, form):
         form.save()
@@ -64,3 +64,17 @@ class WebPasswordResetView(PasswordResetView):
 
 class WebPasswordResetDone(PasswordResetDoneView):
     template_name = 'main/password_reset_done.html'
+
+
+def image_upload_view(request):
+    """Process images uploaded by users"""
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            # Get the current instance object to display in the template
+            img_obj = form.instance
+            return render(request, 'main/profile.html', {'form': form, 'img_obj': img_obj})
+    else:
+        form = ImageForm()
+    return render(request, 'main/profile.html', {'form': form})

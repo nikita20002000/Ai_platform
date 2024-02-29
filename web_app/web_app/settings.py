@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -148,3 +148,9 @@ EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'vertihost@yandex.ru'
 EMAIL_HOST_PASSWORD = 'fupgchljogoulpgb'
 DEFAULT_FROM_EMAIL ='vertihost@yandex.ru'
+
+
+MEDIA_URL = '/media/'
+
+# Путь хранения картинок
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

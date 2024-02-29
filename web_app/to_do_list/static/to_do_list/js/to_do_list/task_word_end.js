@@ -4,13 +4,18 @@ const text = document.getElementById("correct_word")
 var nouns_list = [
     'незавершенная задача',
     'незавершенных задачи',
-    'незавершенных задач'
+    'незавершенных задач',
+    'задач'
 ]
 
 
 function getNoun(number) {
     number = Math.abs(number) % 100;
     var num = number % 10;
+
+    if (number === 0) {
+        return 3
+    }
 
     if (number > 10 && number < 20) {
         return 2;
