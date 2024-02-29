@@ -1,0 +1,57 @@
+{% extends 'news_list/news_list_template.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'news/css/news.css' %}">
+
+
+<form method="POST">
+    <div class="row justify-content-end">
+
+        <div class="col-6 float-right">
+            <div class="input-group mb-5 h-50">
+                    {% csrf_token %}
+                    <input class="bg-light form-control border-0 small" type="text" placeholder="Введите ключевое слово для фильтра новостей..." name="topic_theme" value="{{ topic_theme }}">
+                    <button class="btn btn-info py-0" type="submit" value="Search"><i class="fas fa-search"></i>
+                    </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="row ">
+            {% for new in news %}
+
+    <div class="col-4 col-sm-4 col-lg-4 col-xl-4 col-xxl-4 p-rl-1 p-b-2">
+        <div class="container news-card">
+            <div class="container image-1">
+                <a href={{new.url}}>
+                    {% if new.image %}
+                    <img src={{new.image}}  class="img-fluid rounded" alt="тут должна быть картинка :(">
+                    {% else %}
+                    <img src="{% static 'news/img/error.jpg' %}"  class="img-fluid rounded" alt="тут должна быть картинка :(">
+                    {% endif %}
+                </a>
+            </div>
+            <div class="divider-extra-small"></div>
+            <div class="container date text-end mr-5">
+                <p>{{new.published}}</p>
+            </div>
+            <div class="container recent-header m-2">
+                <a href={{new.url}}>
+                    <h4>{{new.title}}</h4>
+                </a>
+            </div>
+            <div class="container recent-intro m-2">
+                <p class="main-par">{{new.description}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+{% endblock content %}

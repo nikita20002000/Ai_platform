@@ -1,0 +1,19 @@
+.news-card {
+    background-color: rgba(39, 70, 89, 1);
+    border-radius: 10px;
+    padding: 0;
+}
+.news-card h3 {
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.news-card .container {
+    padding: 0;
+}
+
+h4 {
+    font-weight: bold;
+
+}
