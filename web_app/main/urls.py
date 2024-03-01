@@ -8,7 +8,7 @@ app_name = "main"
 urlpatterns = [
     path('', TaskList.as_view(), name='home'),
     path('profile/', views.profile, name='profile'),
-
+    path('profile-update/', views.update_profile, name='profile-update'),
 
     path('register/', RegisterView.as_view(), name='register'),
     path('password_reset/', WebPasswordResetView.as_view(), name='password_reset'),

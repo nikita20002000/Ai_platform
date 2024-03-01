@@ -1,8 +1,9 @@
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
-
+from django.dispatch import receiver
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 class Image(models.Model):
     title = models.CharField(max_length=200)
@@ -10,3 +11,21 @@ class Image(models.Model):
 
     def __str__(self):
         return self.title
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    role = models.CharField(max_length=30, blank=True)
+    address = models.TextField(max_length=100, blank=True)
+    city = models.CharField(max_length=30, blank=True)
+    country = models.CharField(max_length=30, blank=True)
+    img = models.ImageField(upload_to='images')
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()

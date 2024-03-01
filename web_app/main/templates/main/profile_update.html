@@ -296,7 +296,8 @@
                                             <p class=" m-0 fw-bold">User Settings</p>
                                         </div>
                                         <div class="widget card-body">
-                                            <form>
+                                            <form method="POST">
+                                                {% csrf_token %}
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="mb-3"><label class="form-label" for="username"><strong>Имя пользователя</strong></label><input class="form-control" type="text" id="username" placeholder="{{ user.username }}" name="username" disabled></div>
@@ -322,20 +323,21 @@
                                             <p class="text m-0 fw-bold">Контактные данные</p>
                                         </div>
                                         <div class="widget shadow card-body">
-                                            <form>
-                                                <div class="mb-3"><label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" placeholder="{{user.profile.address}}" name="address" disabled></div>
+                                            <form method="POST">
+                                                {% csrf_token %}
+                                                <div class="mb-3"><label class="form-label" for="address"><strong>Address</strong></label>
+                                                    <input class="form-control" type="text" id="address" placeholder="{{user.profile.address}}" name="address"></div>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label><input class="form-control" type="text" id="city" placeholder="{{user.profile.city}}" name="city" disabled></div>
+                                                        <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label><input class="form-control" type="text" id="city" placeholder="{{user.profile.city}}" name="city"></div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" placeholder="{{user.profile.country}}" name="country" disabled></div>
+                                                        <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" placeholder="{{user.profile.country}}" name="country"></div>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 d-flex justify-content-end">
-                                                    <a href="{% url 'main:profile-update' %}">
-                                                        <button class="btn btn-primary btn-sm" type="submit">Изменить</button>
-                                                    </a>
+
+                                                    <button class="btn btn-primary btn-sm" type="submit" href="">Сохранить изменения</button>
 
                                                 </div>
                                             </form>
@@ -476,5 +478,13 @@
     <script src={% static "main/js/main/date_time.js" %}></script>
     <script src={% static "main/js/chat_bot/chat_bot.js" %}></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>
+    <form method="post">
+  {% csrf_token %}
+  {{ user_form.as_p }}
+  {{ profile_form.as_p }}
+  <button type="submit">Сохранить изменения</button>
+</form>
 </body>
 </html>

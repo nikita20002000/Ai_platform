@@ -1,12 +1,14 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db import transaction
 from django.views.generic.list import ListView
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
-from .forms import RegisterForm, ImageForm
-
+from .forms import RegisterForm, ImageForm, ProfileForm, UserForm
+from django.contrib.auth.models import User
+from .models import Profile
 from to_do_list.models import Task
 from to_do_list.views import TaskList
 
@@ -78,3 +80,23 @@ def image_upload_view(request):
     else:
         form = ImageForm()
     return render(request, 'main/profile.html', {'form': form})
+
+
+@login_required
+@transaction.atomic
+def update_profile(request):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+
+            return redirect('main:profile')
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'main/profile_update.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })
