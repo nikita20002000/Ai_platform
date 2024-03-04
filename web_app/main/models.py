@@ -5,6 +5,7 @@ from django.dispatch import receiver
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
+
 class Image(models.Model):
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to='images')
@@ -21,11 +22,29 @@ class Profile(models.Model):
     country = models.CharField(max_length=30, blank=True)
     img = models.ImageField(upload_to='images')
 
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         Profile.objects.create(user=instance)
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
-    if created:
+    try:
+        instance.profile.save()
+    except ObjectDoesNotExist:
         Profile.objects.create(user=instance)
+
+
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+from django.core.exceptions import ObjectDoesNotExist
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    try:
+        instance.profile.save()
+    except ObjectDoesNotExist:
+        Profile.objects.create(user=instance)

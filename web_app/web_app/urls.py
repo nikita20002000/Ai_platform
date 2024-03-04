@@ -12,6 +12,7 @@ urlpatterns = [
     path('to_do/', include('to_do_list.urls', namespace='to_do_list')),
     path('news/', include('news.urls', namespace='news')),
     path('accounts/', include("django.contrib.auth.urls")),
+    path('finance/', include('finance.urls', namespace='finance')),
 ] + static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:

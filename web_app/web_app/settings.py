@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'main',
     'to_do_list',
     'news',
+    'finance',
 ]
 
 MIDDLEWARE = [
@@ -135,6 +136,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / "main/static",
     BASE_DIR / "to_do_list/static",
+    BASE_DIR / "news/static",
+    BASE_DIR / "finance/static",
 ]
 
 LOGIN_REDIRECT_URL = reverse_lazy("main:home")
