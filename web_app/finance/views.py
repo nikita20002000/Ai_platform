@@ -50,3 +50,10 @@ def finance_home(request):
 
 def visualize(request):
     return render(request, 'finance/visualization_dashboard.html')
+
+
+def analytics(request):
+    return render(request, 'finance/analytics_dashboard.html')
+
+def analytics_sber(request):
+    return render(request, 'analytics/sber.html')

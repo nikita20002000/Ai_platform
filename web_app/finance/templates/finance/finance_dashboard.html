@@ -1,5 +1,10 @@
 {% extends 'finance/finance_template.html' %}
 
+{% block urls %}
+<a class="nav-link active" href="{% url 'finance:finance_home'%}"><i class="fa fa-power-off glow-icon" aria-hidden="true"></i><span>Инструменты</span></a>
+<a class="nav-link" href="{% url 'finance:analytics'%}"><span>Аналитика</span></a>
+{% endblock %}
+
 {% block content %}
 {% load static %}
 
