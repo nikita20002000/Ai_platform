@@ -1,0 +1,98 @@
+{% extends 'sells/template_sells.html' %}
+
+{% block content %}
+{% load static %}
+<div class="d-sm-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-2">Продажи</h3>
+</div>
+
+<a href="">
+    <a href="{% url 'sells:sell-create' %}">
+        <button class="btn btn-primary mb-5" type="button">ДОБАВИТЬ НОВУЮ ЗАПИСЬ</button>
+    </a>
+</a><br>
+<br>
+<div class="d-sm-flex justify-content-between align-items-center mb-4 mt-4">
+    <h3 class="mb-2"></h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Экспортировать в CSV</a>
+</div>
+<form method="GET">
+    <div class="row justify-content-end">
+        <div class="col-6 float-right">
+            <div class="input-group mb-3 h-50">
+                <div class="dropdown me-5 ms-5">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        Сортировать
+                      </a>
+
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Действие</a></li>
+                        <li><a class="dropdown-item" href="#">Другое действие</a></li>
+                        <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
+                      </ul>
+                </div>
+                <input class="bg-light form-control border-0 small" type="text" placeholder="Поиск по наименованию товара/услуги..." name="search-area" value="{{ search_input }}">
+                <button class="btn btn-info py-0" type="submit" value="Search"><i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="row mt-5">
+    <table class="table table-hover table-bordered">
+      <thead class="thead-dark">
+        <tr>
+            <th scope="col"><p>ID</p></th>
+          <th scope="col"><p>Дата</p></th>
+          <th scope="col"><p>Сумма</p></th>
+          <th scope="col"><p class="text-center">Наименование товара, услуги</p></th>
+          <th scope="col"><p>Категория дохода</p></th>
+          <th scope="col"><p>Количество</p></th>
+          <th scope="col"><p class="text-center">Себестоимость единицы</p></th>
+          <th scope="col"><p class="text-center">Себестоимость общая</p></th>
+          <th scope="col"><p>Маржа</p></th>
+          <th scope="col"><p>Маржа, %</p></th>
+          <th scope="col"><p>Статус платежа</p></th>
+          <th scope="col"><p>Удалить</p></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for sell in sells %}
+
+            <tr>
+                <th scope="row">{{sell.id}}</th>
+                <td>{{sell.date}}</td>
+                <td>{{sell.summ}}</td>
+
+                <td>
+                    <a href="{% url 'sells:sell-update' sell.id  %}">
+                    {{sell.name}}
+                    </a>
+                </td>
+                <td>{{sell.category}}</td>
+                <td>{{sell.amount}}</td>
+                <td>{{sell.price_for_one}}</td>
+                <td>{{sell.full_price}}</td>
+                <td>{{sell.margue}}</td>
+                <td>Тут будет формула</td>
+                {% if sell.status == "NOSTATUS" %}
+                <td>Отсутствует</td>
+                {% endif %}
+                {% if sell.status == "DONE" %}
+                <td><span style="color: lawngreen">Оплачено</span></td>
+                {% endif %}
+                {% if sell.status == "WAITING" %}
+                <td><span style="color: orange">Ожидает оплаты</span></td>
+                {% endif %}
+                {% if sell.status == "DELIVERY_PAY" %}
+                <td><span style="color: cornflowerblue">Наложенный платеж</span></td>
+                {% endif %}
+                <td><a class="delete-link" href="{% url 'sells:sell-delete' sell.id %}">&#215;</a></td>
+            </tr>
+
+      {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+{% endblock content %}

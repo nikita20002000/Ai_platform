@@ -40,6 +40,8 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'main:profile' %}"><i class="fas fa-user"></i><span>Профиль</span></a></li>
                     <li class="nav-item"><a class="nav-link active" href="{% url 'news:news_list'%}"><i class="fa fa-newspaper-o"></i><span>Лента</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'to_do_list:task_list'%}"><i class="fas fa-table"></i><span>Менеджер задач</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'sells:sells-list'%}"><i class="fa fa-suitcase"></i><span>Продажи</span></a></li>
+
 
 
                     <li class="nav-item">
@@ -176,7 +178,13 @@
                             </li>
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-white-600 small">{{ user.username }}</span><img class="border rounded-circle img-profile" src="http://www.w3.org/2000/svg"></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-white-600 small">{{ user.username }}</span>
+                                    {% if user.profile.img %}
+                                        <img class="border rounded-circle img-profile" src="../media/{{user.profile.img}}">
+                                        {% else %}
+                                        <img class="border rounded-circle img-profile" src="../media/images/default_avatar.png">
+                                        {% endif %}
+                                </a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
 
                                         <a class="dropdown-item" href="{% url 'main:profile' %}">

@@ -1,0 +1,93 @@
+{% extends 'sells/template_sells.html' %}
+
+{% block content %}
+<div class="row-2 justify-content-start mb-5">
+    <a href="{% url 'sells:sells-list' %}">
+        <button type="button my-2" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"></path>
+                </svg>
+                Вернуться назад
+        </button>
+    </a>
+</div>
+{% if sell %}
+<div class="d-sm-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-2">ID: {{sell.id}} | {{ sell }}</h3>
+</div>
+{% else %}
+<div class="d-sm-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-2">Добавление продажи</h3>
+</div>
+{% endif %}
+
+<form method="POST" action="">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-12 col-md-8 col-xl-8 mb-4 mx-auto">
+            <div class="widget card shadow border-start-primary py-2">
+                <div class="card-body">
+                    <div class="mb-3">
+                      <label for="id_date" class="form-label">Дата продажи (Y-M-D)</label>
+                      <input type="text" class="form-control" id="id_date" name="date" value="{{sell.date}}">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="id_summ" class="form-label">Сумма, руб</label>
+                      <input type="number" class="form-control" id="id_summ" name="summ" step="any" value="{{sell.summ}}">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="id_name" class="form-label">Наименование товара, услуги</label>
+                      <input type="text" class="form-control" id="id_name" name="name" maxlength="200" value="{{sell.name}}">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="id_category" class="form-label">Категория дохода</label>
+                      <input type="text" class="form-control" id="id_category" name="category" maxlength="200" value="{{sell.category}}">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="id_amount" class="form-label">Количество</label>
+                      <input type="number" class="form-control" id="id_amount" name="amount" value="{{sell.amount}}">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="id_price_for_one" class="form-label">Себестоимость единицы, руб</label>
+                      <input type="number" class="form-control" id="id_price_for_one" name="price_for_one" step="any" value="{{sell.price_for_one}}">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="id_full_price" class="form-label">Себестоимость общаяб руб</label>
+                      <input type="number" class="form-control" id="id_full_price" name="full_price" step="any" value="{{sell.full_price}}">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="id_margue" class="form-label">Маржа, руб</label>
+                      <input type="number" class="form-control" id="id_margue" name="margue" step="any" value="{{sell.margue}}">
+                    </div>
+
+                    <div class="mb-3">
+                    <label for="id_status" class="form-label">Статус</label>
+                        <select id="id_status" class="form-select" name="status">
+                          <option selected>{{sell.status}}</option>
+                          <option value="DONE">Оплачено</option>
+                          <option value="WAITING">Ожидает оплаты</option>
+                          <option value="DELIVERY_PAY">Наложенный платеж</option>
+                          <option value="NOSTATUS">Информация отсутствует</option>
+                        </select>
+                    </div>
+                    {{ form.errors }}
+                    {% if sell %}
+                    <button class="btn btn-info mt-2 mb-2" type="submit" value="submit">Применить изменения</button>
+                    {%else%}
+                    <button class="btn btn-primary mt-2 mb-2" type="submit" value="submit">Добавить запись</button>
+                    {%endif%}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

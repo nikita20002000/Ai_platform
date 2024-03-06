@@ -13,6 +13,7 @@ urlpatterns = [
     path('news/', include('news.urls', namespace='news')),
     path('accounts/', include("django.contrib.auth.urls")),
     path('finance/', include('finance.urls', namespace='finance')),
+    path('sells/', include('sells.urls', namespace='sells')),
 ] + static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:

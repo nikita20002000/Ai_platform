@@ -7,5 +7,4 @@ urlpatterns = [
     path('visualize', views.visualize, name='visualize'),
     path('analytics', views.analytics, name='analytics'),
     path('analytics/SBER', views.analytics_sber, name='analytics_sber'),
-
 ]

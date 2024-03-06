@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'to_do_list',
     'news',
     'finance',
+    'sells',
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "to_do_list/static",
     BASE_DIR / "news/static",
     BASE_DIR / "finance/static",
+    BASE_DIR / "sells/static",
 ]
 
 LOGIN_REDIRECT_URL = reverse_lazy("main:home")
