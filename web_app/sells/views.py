@@ -16,6 +16,7 @@ class SellsList(LoginRequiredMixin, ListView):
     context_object_name = 'sells'
 
     def get_context_data(self, **kwargs):
+        import json
         context = super().get_context_data(**kwargs)
 
         context['sells'] = context['sells'].filter(user=self.request.user)
@@ -26,9 +27,16 @@ class SellsList(LoginRequiredMixin, ListView):
             context['sells'] = context['sells'].filter(
                 name__icontains=search_input,)
 
-        context['search-input'] = search_input
+
+        context['search_input'] = search_input
+
 
         return context
+
+    def get_ordering(self):
+        ordering = self.request.GET.get('orderby')
+        print(ordering)
+        return ordering
 
 
 
@@ -91,6 +99,7 @@ class DeleteSell(DeleteView):
 
 
 class SellVisualization(LoginRequiredMixin, ListView):
+
     model = Sell
 
     template_name = 'visualization/visualization_dashboard.html'
@@ -100,6 +109,8 @@ class SellVisualization(LoginRequiredMixin, ListView):
     context_object_name = 'sells'
 
     def get_context_data(self, **kwargs):
+        import json
+
         from datetime import date
         context = super().get_context_data(**kwargs)
 
@@ -140,9 +151,7 @@ class SellVisualization(LoginRequiredMixin, ListView):
             'sort_by_order': [[key, value] for key,value in mid_dict_3.items()],
             'sort_by_amount': [[key, value] for key, value in my_dict_4.items()],
             'sort_by_date': [[key, value] for key, value in mid_dict_5.items()],
-            'sells': context
         }
-
 
 
         return context

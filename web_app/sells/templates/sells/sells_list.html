@@ -18,7 +18,8 @@
     </a>
     <h3 class="mb-2"></h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Экспортировать в CSV</a>
 </div>
-<form method="GET">
+
+<form action="{% url 'sells:sells-list' %}" method="get" id="sortProduct">
     <div class="row justify-content-end">
         <div class="col-6 float-right">
             <div class="input-group mb-3 h-50">
@@ -28,9 +29,14 @@
                       </a>
 
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Действие</a></li>
-                        <li><a class="dropdown-item" href="#">Другое действие</a></li>
-                        <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
+                          <li><input class="form-control" type="submit" name="orderby" value="name"></li>
+                          <li><input class="form-control" type="submit" name="orderby" value="summ"></li>
+                          <li><input class="form-control" type="submit" name="orderby" value="-summ"></li>
+                          <li><input class="form-control" type="submit" name="orderby" value="date"></li>
+                          <li><input class="form-control" type="submit" name="orderby" value="-date"></li>
+                          <li><input class="form-control" type="submit" name="orderby" value="full_price"></li>
+                          <li><input class="form-control" type="submit" name="orderby" value="-full_price"></li>
+
                       </ul>
                 </div>
                 <input class="bg-light form-control border-0 small" type="text" placeholder="Поиск по наименованию товара/услуги..." name="search-area" value="{{ search_input }}">
@@ -40,7 +46,7 @@
         </div>
     </div>
 </form>
-
+<div style="display: none" id="jsonData" data-json="{{ json_data }}" id="json_data"></div>
 <div class="row mt-5">
     <table class="table table-hover table-bordered">
       <thead class="thead-dark">
@@ -95,5 +101,5 @@
       </tbody>
     </table>
 </div>
-
+<script src={% static "sells/js/csv_converter.js" %}></script>
 {% endblock content %}
