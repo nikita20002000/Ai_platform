@@ -15,6 +15,8 @@ class Sell(models.Model):
 
 
 
+
+
     DONE = 'DONE'
     WAITING = 'WAITING'
     DELIVERY_PAY = "DELIVERY_PAY"

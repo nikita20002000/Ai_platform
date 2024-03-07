@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import SellsList, SellDetail, SellCreate, SellUpdate, DeleteSell
+from .views import SellsList, SellDetail, SellCreate, SellUpdate, DeleteSell, SellVisualization
 
 app_name = 'sells'
 
@@ -9,5 +9,6 @@ urlpatterns = [
     path('sell-create/', SellCreate.as_view(), name='sell-create'),
     path('sell-update/<int:pk>/', SellUpdate.as_view(), name='sell-update'),
     path('sell-delete/<int:pk>/', DeleteSell.as_view(), name='sell-delete'),
+    path('sell-visualization', SellVisualization.as_view(), name='sell-visualization')
 
 ]

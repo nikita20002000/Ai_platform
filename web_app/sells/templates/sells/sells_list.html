@@ -11,8 +11,11 @@
         <button class="btn btn-primary mb-5" type="button">ДОБАВИТЬ НОВУЮ ЗАПИСЬ</button>
     </a>
 </a><br>
-<br>
+
 <div class="d-sm-flex justify-content-between align-items-center mb-4 mt-4">
+    <a href="{% url 'sells:sell-visualization' %}">
+        <button class="btn btn-info mb-5" type="button">Визуализация данных</button>
+    </a>
     <h3 class="mb-2"></h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Экспортировать в CSV</a>
 </div>
 <form method="GET">
@@ -44,14 +47,13 @@
         <tr>
             <th scope="col"><p>ID</p></th>
           <th scope="col"><p>Дата</p></th>
-          <th scope="col"><p>Сумма</p></th>
+          <th scope="col"><p>Сумма, руб</p></th>
           <th scope="col"><p class="text-center">Наименование товара, услуги</p></th>
           <th scope="col"><p>Категория дохода</p></th>
           <th scope="col"><p>Количество</p></th>
-          <th scope="col"><p class="text-center">Себестоимость единицы</p></th>
-          <th scope="col"><p class="text-center">Себестоимость общая</p></th>
-          <th scope="col"><p>Маржа</p></th>
-          <th scope="col"><p>Маржа, %</p></th>
+          <th scope="col"><p class="text-center">Себестоимость единицы, руб</p></th>
+          <th scope="col"><p class="text-center">Себестоимость общая, руб</p></th>
+          <th scope="col"><p>Маржа, руб</p></th>
           <th scope="col"><p>Статус платежа</p></th>
           <th scope="col"><p>Удалить</p></th>
         </tr>
@@ -74,7 +76,6 @@
                 <td>{{sell.price_for_one}}</td>
                 <td>{{sell.full_price}}</td>
                 <td>{{sell.margue}}</td>
-                <td>Тут будет формула</td>
                 {% if sell.status == "NOSTATUS" %}
                 <td>Отсутствует</td>
                 {% endif %}
