@@ -16,7 +16,11 @@
     <a href="{% url 'sells:sell-visualization' %}">
         <button class="btn btn-info mb-5" type="button">Визуализация данных</button>
     </a>
-    <h3 class="mb-2"></h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Экспортировать в CSV</a>
+    <h3 class="mb-2"></h3>
+    <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" id="btnExport" type="button">
+        <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;
+        Экспортировать в CSV
+    </a>
 </div>
 
 <form action="{% url 'sells:sells-list' %}" method="get" id="sortProduct">
@@ -50,18 +54,18 @@
 </form>
 <div style="display: none" id="jsonData" data-json="{{ json_data }}" id="json_data"></div>
 <div class="row mt-5">
-    <table class="table table-hover table-bordered">
+    <table id="table" class="table table-hover table-bordered">
       <thead class="thead-dark">
         <tr>
             <th scope="col"><p>ID</p></th>
           <th scope="col"><p>Дата</p></th>
-          <th scope="col"><p>Сумма, руб</p></th>
-          <th scope="col"><p class="text-center">Наименование товара, услуги</p></th>
+          <th scope="col"><p>Сумма руб</p></th>
+          <th scope="col"><p class="text-center">Наименование товара услуги</p></th>
           <th scope="col"><p>Категория дохода</p></th>
           <th scope="col"><p>Количество</p></th>
-          <th scope="col"><p class="text-center">Себестоимость единицы, руб</p></th>
-          <th scope="col"><p class="text-center">Себестоимость общая, руб</p></th>
-          <th scope="col"><p>Маржа, руб</p></th>
+          <th scope="col"><p class="text-center">Себестоимость единицы руб</p></th>
+          <th scope="col"><p class="text-center">Себестоимость общая руб</p></th>
+          <th scope="col"><p>Маржа руб</p></th>
           <th scope="col"><p>Статус платежа</p></th>
           <th scope="col"><p>Удалить</p></th>
         </tr>
