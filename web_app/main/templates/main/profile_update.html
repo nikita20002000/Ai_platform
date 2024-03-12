@@ -215,7 +215,12 @@
                             <div class="widget card mb-3">
                                 <div class="content-section">
                                     <div class="media">
-                                        <div class="card-body text-center shadow"><img class="rounded-circle-img mb-3 mt-4" src="" width="160" height="160">
+                                        <div class="card-body text-center shadow">
+                                            {% if user.profile.img %}
+                                            <img class="rounded-circle-img mb-3 mt-4" src="../media/{{user.profile.img}}" width="160" height="160">
+                                            {% else %}
+                                            <img class="rounded-circle-img mb-3 mt-4" src="../media/images/default_avatar.png" width="160" height="160">
+                                            {% endif %}
                                             <div class="mb-3"><button class="btn btn-primary btn-sm" type="button" onclick="location.href='{% url 'main:upload' %}?next=/profile'">Сменить фото профиля</button></div>
                                         </div>
                                     </div>
@@ -291,58 +296,60 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <div class="widget card shadow mb-3">
-                                        <div class="widget card-header py-3">
-                                            <p class=" m-0 fw-bold">User Settings</p>
-                                        </div>
-                                        <div class="widget card-body">
-                                            <form method="POST">
-                                                {% csrf_token %}
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="username"><strong>Имя пользователя</strong></label><input class="form-control" type="text" id="username" placeholder="{{ user.username }}" name="username" disabled></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="email"><strong>Адрес электронной почты</strong></label><input class="form-control" type="email" id="email" placeholder="{{ user.email }}" name="email" disabled></div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Имя</strong></label><input class="form-control" type="text" id="first_name" placeholder="{{ user.first_name }}" name="first_name" disabled></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Фамилия</strong></label><input class="form-control" type="text" id="last_name" placeholder="{{ user.last_name }}" name="last_name" disabled></div>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 d-flex justify-content-end"><button class="btn btn-primary btn-sm" type="submit">Изменить</button></div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="widget card shadow">
-                                        <div class="widget card-header py-3">
-                                            <p class="text m-0 fw-bold">Контактные данные</p>
-                                        </div>
-                                        <div class="widget shadow card-body">
-                                            <form method="POST">
-                                                {% csrf_token %}
-                                                <div class="mb-3"><label class="form-label" for="address"><strong>Address</strong></label>
-                                                    <input class="form-control" type="text" id="address" placeholder="{{user.profile.address}}" name="address"></div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label><input class="form-control" type="text" id="city" placeholder="{{user.profile.city}}" name="city"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" placeholder="{{user.profile.country}}" name="country"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 d-flex justify-content-end">
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <div class="widget card shadow mb-3">
+                                            <div class="widget card-header py-3">
+                                                <p class=" m-0 fw-bold">User Settings</p>
+                                            </div>
+                                            <div class="widget card-body">
 
-                                                    <button class="btn btn-primary btn-sm" type="submit" href="">Сохранить изменения</button>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="username"><strong>Имя пользователя</strong></label><input class="form-control" type="text" id="username" value="{{ user.username }}" name="username" ></div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="email"><strong>Адрес электронной почты</strong></label><input class="form-control" type="email" id="email" value="{{ user.email }}" name="email" ></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="first_name"><strong>Имя</strong></label><input class="form-control" type="text" id="first_name"  value="{{ user.first_name }}" name="first_name"></div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Фамилия</strong></label><input class="form-control" type="text" id="last_name" value="{{ user.last_name }}" name="last_name" ></div>
+                                                        </div>
+                                                    </div>
 
-                                                </div>
-                                            </form>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class="widget card shadow">
+                                            <div class="widget card-header py-3">
+                                                <p class="text m-0 fw-bold">Контактные данные</p>
+                                            </div>
+                                            <div class="widget shadow card-body">
+
+                                                    <div class="mb-3"><label class="form-label" for="address"><strong>Address</strong></label>
+                                                        <input class="form-control" type="text" id="address"  value="{{user.profile.address}}" name="address"></div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label>
+                                                                <input class="form-control" type="text" id="city" value="{{user.profile.city}}" name="city">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" value="{{user.profile.country}}" name="country"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 d-flex justify-content-end">
+
+                                                        <button class="btn btn-primary btn-sm" type="submit" href="">Сохранить изменения</button>
+
+                                                    </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
 
                                     <div class="container mt-3 mb-3">
                                         <div class="row">

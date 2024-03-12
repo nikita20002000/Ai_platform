@@ -14,14 +14,15 @@ def save_profile(sender, instance, **kwargs):
   instance.profile.save()
 
 
-# Логика отслеживания логина и логаута пользователя
+# Логика отслеживания логина и логаута пользователей
+# Данные отправляются в файл с логами в директории logs/user-log.txt
 from django.contrib.auth.signals import user_logged_in, user_logged_out, user_login_failed
 from datetime import datetime
 
 @receiver(user_logged_in)
 def user_is_logged_in(sender, request, user, **kwargs):
     with open('logs/user-log.txt', 'a') as f:
-        f.write(f'USER {user.username} TYPE: "login" DATE: {datetime.now()}' + '\n')
+        f.write(f'USER: {user.username} TYPE: "login" DATE: {datetime.now()}' + '\n')
 
 
 

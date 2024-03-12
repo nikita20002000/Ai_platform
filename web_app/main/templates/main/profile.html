@@ -246,7 +246,7 @@
 
                             <div class="widget card shadow mb-4">
                                 <div class="widget card-header py-3">
-                                    <h6 class=" fw-bold m-0">Projects</h6>
+                                    <h6 class=" fw-bold m-0">Участие в проектах</h6>
                                 </div>
                                 <div class="widget card-body">
                                     <h4 class="small fw-bold">Server migration<span class="float-end">20%</span></h4>
@@ -327,7 +327,12 @@
                                                         <div class="mb-3"><label class="form-label" for="last_name"><strong>Фамилия</strong></label><input class="form-control" type="text" id="last_name" placeholder="{{ user.last_name }}" name="last_name" disabled></div>
                                                     </div>
                                                 </div>
-                                                <div class="mb-3 d-flex justify-content-end"><button class="btn btn-primary btn-sm" type="submit">Изменить</button></div>
+                                                <div class="mb-3 d-flex justify-content-end">
+                                                    <a href="{% url 'main:profile-update' %}">
+                                                        <span>Изменить</span>
+                                                    </a>
+
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
@@ -348,7 +353,7 @@
                                                 </div>
                                                 <div class="mb-3 d-flex justify-content-end">
                                                     <a href="{% url 'main:profile-update' %}">
-                                                        <button class="btn btn-primary btn-sm" type="submit">Изменить</button>
+                                                        <span>Изменить</span>
                                                     </a>
 
                                                 </div>
