@@ -46,6 +46,8 @@ h6 {
     font-size: 22px;
 }
 
+
+
 span, p, h6, h4 {
     font-family: "Proxima Nova";
     color: #FFFFFF;
@@ -98,4 +100,12 @@ span, p, h6, h4 {
 
 .accordion-body {
     padding: 0;
+}
+
+.instrument-h h4 {
+    font-weight: bold;
+    font-family: "Proxima Nova";
+    color: #FFFFFF;
+    margin-left: 20px;
+    font-size: 1.5vw;
 }

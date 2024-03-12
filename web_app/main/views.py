@@ -10,6 +10,7 @@ from .forms import RegisterForm, ImageForm, ProfileForm, UserForm
 from django.contrib.auth.models import User
 from .models import Profile
 from to_do_list.models import Task
+from sells.models import Sell
 from to_do_list.views import TaskList
 
 class TaskList(LoginRequiredMixin, ListView):
@@ -25,6 +26,7 @@ class TaskList(LoginRequiredMixin, ListView):
         context['tasks'] = context['tasks'].filter(user=self.request.user)
         context['count'] = context['tasks'].filter(complete=False).count()
 
+
         # Логика поиска
         search_input = self.request.GET.get('search-area') or ''
 
@@ -35,6 +37,39 @@ class TaskList(LoginRequiredMixin, ListView):
         context['search_input'] = search_input
 
         return context
+
+
+class SellsList(LoginRequiredMixin, ListView):
+    model = Sell
+    template_name = 'main/index.html'
+
+    context_object_name = 'sells'
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+
+        context['sells'] = context['sells'].filter(user=self.request.user)
+
+
+        # CБОР ДАННЫХ ПО СТАТУСУ ОПЛАТЫ
+        mid_dict_3 = {}
+        for k in context['sells']:
+            mid_dict_3[k.status] = mid_dict_3.get(j.status, 0) + 1
+
+
+        context = {
+            'sort_by_order': [[key, value] for key, value in mid_dict_3.items()],
+        }
+
+
+        return context
+
+
+
+
+
+
 
 @login_required
 def index(request):
