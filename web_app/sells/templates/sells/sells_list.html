@@ -1,73 +1,137 @@
 {% extends 'sells/template_sells.html' %}
 
+{% block menu %}
+<div class="container">
+                                <div class="row mb-4">
+                                    <h3>CRM-аналитика</h3>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="accordion" id="sells-menu-item-1">
+                                        <div class="accordion-item">
+                                            <a class="nav-link accordion-but mb-4" type="button" data-bs-toggle="collapse" data-bs-target="#sellsMenuCollapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                               <h4>Продажи</h4>
+                                            </a>
+                                            <div id="sellsMenuCollapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <a class="nav-link mb-4 ms-3 item-active item" href="{% url 'sells:sells-list'%}"><h4 class="ms-3 me-3">База данных продаж</h4></a>
+                                                    <a class="nav-link mb-4 ms-3 item" href="{% url 'sells:sell-visualization'%}"><h4 class="ms-3 me-3">Визуализация продаж</h4></a>
+                                                    <a class="nav-link mb-4 ms-3 item" href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">Воронка продаж</h4></a>
+                                                    <a class="nav-link mb-4 ms-3 item " href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">План продаж</h4></a>
+                                                    <a class="nav-link mb-4 ms-3 item " href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">Сравнение периодов</h4></a>
+                                                    <a class="nav-link ms-3 item " href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">ML аналитика</h4></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="accordion" id="sells-menu-item-2">
+                                        <div class="accordion-item">
+                                            <a class="nav-link accordion-but mb-4" type="button" data-bs-toggle="collapse" data-bs-target="#sellsMenuCollapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                               <h4>Клиенты</h4>
+                                            </a>
+                                            <div id="sellsMenuCollapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <a class="nav-link mb-4 ms-3 item" href="{% url 'sells:sells-list'%}"><h4 class="ms-3 me-3">Клиентская база данных</h4></a>
+                                                    <a class="nav-link mb-4 ms-3 item" href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">Анализ клиентов</h4></a>
+                                                    <a class="nav-link ms-3 item" href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">Работа с клиентами</h4></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <h4 class="item">Сквозная аналитика</h4>
+                                </div>
+                                <div class="row mb-4">
+                                    <h4 class="item">Мои отчеты</h4>
+                                </div>
+                                <div class="row mb-4">
+                                    <h4 class="item">Складской учет</h4>
+                                </div>
+                                <div class="row mb-4">
+                                    <h4 class="item">BI-аналитика</h4>
+                                </div>
+                                <div class="row mb-4">
+                                    <h4 class="item">Статистика звонков</h4>
+                                </div>
+                                <div class="row mb-4">
+                                    <h4 class="item">Статистика диалогов</h4>
+                                </div>
+                            </div>
+{% endblock menu %}
+
 {% block content %}
 {% load static %}
 <div class="d-sm-flex justify-content-between align-items-center mb-4">
-    <h3 class="mb-2">Продажи</h3>
+    <h4 class="mb-2">База данных продаж</h4>
 </div>
 
-<a href="">
-    <a href="{% url 'sells:sell-create' %}">
-        <button class="btn btn-primary mb-5" type="button">ДОБАВИТЬ НОВУЮ ЗАПИСЬ</button>
-    </a>
-</a><br>
 
-<div class="d-sm-flex justify-content-between align-items-center mb-4 mt-4">
-    <a href="{% url 'sells:sell-visualization' %}">
-        <button class="btn btn-info mb-5" type="button">Визуализация данных</button>
-    </a>
-    <h3 class="mb-2"></h3>
-    <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" id="btnExport" type="button">
-        <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;
-        Экспортировать в CSV
-    </a>
-</div>
+<div style="display: none" id="jsonData" data-json="{{ json_data }}" id="json_data"></div>
+<div class="row mt-5 widget card shadow">
+    <div class="row">
+        <form action="{% url 'sells:sells-list' %}" method="get" id="sortProduct">
+            <div class="row justify-content-end mb-5 mt-3">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xxl-12 float-right">
+                    <div class="input-group h-50">
+                        <div class="dropdown me-5 ms-5">
+                              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                Сортировать
+                              </a>
 
-<form action="{% url 'sells:sells-list' %}" method="get" id="sortProduct">
-    <div class="row justify-content-end">
-        <div class="col-6 float-right">
-            <div class="input-group mb-3 h-50">
-                <div class="dropdown me-5 ms-5">
-                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        Сортировать
-                      </a>
+                              <ul class="dropdown-menu">
+                                  <li><input class="form-control" type="submit" name="orderby" value="name"></li>
+                                  <li><input class="form-control" type="submit" name="orderby" value="summ"></li>
+                                  <li><input class="form-control" type="submit" name="orderby" value="-summ"></li>
+                                  <li><input class="form-control" type="submit" name="orderby" value="date"></li>
+                                  <li><input class="form-control" type="submit" name="orderby" value="-date"></li>
+                                  <li><input class="form-control" type="submit" name="orderby" value="full_price"></li>
+                                  <li><input class="form-control" type="submit" name="orderby" value="-full_price"></li>
+                                  <li><input class="form-control" type="submit" name="orderby" value="status"></li>
+                                  <li><input class="form-control" type="submit" name="orderby" value="-status"></li>
 
-                      <ul class="dropdown-menu">
-                          <li><input class="form-control" type="submit" name="orderby" value="name"></li>
-                          <li><input class="form-control" type="submit" name="orderby" value="summ"></li>
-                          <li><input class="form-control" type="submit" name="orderby" value="-summ"></li>
-                          <li><input class="form-control" type="submit" name="orderby" value="date"></li>
-                          <li><input class="form-control" type="submit" name="orderby" value="-date"></li>
-                          <li><input class="form-control" type="submit" name="orderby" value="full_price"></li>
-                          <li><input class="form-control" type="submit" name="orderby" value="-full_price"></li>
-                          <li><input class="form-control" type="submit" name="orderby" value="status"></li>
-                          <li><input class="form-control" type="submit" name="orderby" value="-status"></li>
-
-                      </ul>
+                              </ul>
+                        </div>
+                        <input class="bg-light form-control border-0 small" type="text" placeholder="Поиск по наименованию товара/услуги..." name="search-area" value="{{ search_input }}">
+                        <button class="btn btn-info py-0" type="submit" value="Search"><i class="fas fa-search"></i>
+                        </button>
+                    </div>
                 </div>
-                <input class="bg-light form-control border-0 small" type="text" placeholder="Поиск по наименованию товара/услуги..." name="search-area" value="{{ search_input }}">
-                <button class="btn btn-info py-0" type="submit" value="Search"><i class="fas fa-search"></i>
-                </button>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="row justify-content-end mb-5 mt-3 ">
+            <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xxl-12 float-right">
+                <div class="input-group  d-flex justify-content-between" >
+                    <a href="{% url 'sells:sell-create' %}">
+                        <button class="btn btn-primary " type="button">ДОБАВИТЬ НОВУЮ ЗАПИСЬ</button>
+                    </a>
+
+                    <a class="btn btn-primary btn-sm d-none d-sm-inline-block float-right" role="button" id="btnExport" type="button">
+                        <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;
+                        Экспортировать в CSV
+                    </a>
+
+                </div>
             </div>
         </div>
     </div>
-</form>
-<div style="display: none" id="jsonData" data-json="{{ json_data }}" id="json_data"></div>
-<div class="row mt-5">
+
     <table id="table" class="table table-hover table-bordered">
       <thead class="thead-dark">
         <tr>
-            <th scope="col"><p>ID</p></th>
-          <th scope="col"><p>Дата</p></th>
-          <th scope="col"><p>Сумма руб</p></th>
-          <th scope="col"><p class="text-center">Наименование товара услуги</p></th>
-          <th scope="col"><p>Категория дохода</p></th>
-          <th scope="col"><p>Количество</p></th>
-          <th scope="col"><p class="text-center">Себестоимость единицы руб</p></th>
-          <th scope="col"><p class="text-center">Себестоимость общая руб</p></th>
-          <th scope="col"><p>Маржа руб</p></th>
-          <th scope="col"><p>Статус платежа</p></th>
-          <th scope="col"><p>Удалить</p></th>
+            <th scope="col"><p class="fs-6 text fw-bolder">ID</p></th>
+          <th scope="col"><p class="fs-6 text text-center fw-bolder">Дата</p></th>
+          <th scope="col"><p class="fs-6 text text-center fw-bolder">Сумма руб</p></th>
+          <th scope="col"><p class="fs-6 text text-center fw-bolder">Наименование товара услуги</p></th>
+          <th scope="col"><p class="fs-6 text text-center fw-bolder">Категория дохода</p></th>
+          <th scope="col"><p class="fs-6 text text-center fw-bolder">Количество</p></th>
+          <th scope="col"><p class="fs-6 text text-center fw-bolder">Себестоимость единицы руб</p></th>
+          <th scope="col"><p class="fs-6 text text-center fw-bolder">Себестоимость общая руб</p></th>
+          <th scope="col"><p class="fs-6 text text-center fw-bolder">Маржа руб</p></th>
+          <th scope="col"><p class="fs-6 text text-center fw-bolder">Статус платежа</p></th>
         </tr>
       </thead>
       <tbody>
@@ -100,7 +164,7 @@
                 {% if sell.status == "DELIVERY_PAY" %}
                 <td><span style="color: cornflowerblue">Наложенный платеж</span></td>
                 {% endif %}
-                <td><a class="delete-link" href="{% url 'sells:sell-delete' sell.id %}">&#215;</a></td>
+
             </tr>
 
       {% endfor %}

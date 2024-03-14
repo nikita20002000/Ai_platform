@@ -1,7 +1,6 @@
-h4 {
-    margin-left: px;
+.task-informer, .task-informer span{
     font-size: 1.6vw;
-    color: #FFFFFF;
+    color: var(--text-color);
     font-family: "Proxima Nova";
     letter-spacing: 8px;
     font-weight: bold;

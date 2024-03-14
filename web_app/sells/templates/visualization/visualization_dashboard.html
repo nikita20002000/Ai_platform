@@ -1,20 +1,73 @@
 {% extends 'sells/template_sells.html' %}
 {% load static %}
+{% block menu %}
+<div class="container">
+                                <div class="row mb-4">
+                                    <h3>CRM-аналитика</h3>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="accordion" id="sells-menu-item-1">
+                                        <div class="accordion-item">
+                                            <a class="nav-link accordion-but mb-4" type="button" data-bs-toggle="collapse" data-bs-target="#sellsMenuCollapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                               <h4>Продажи</h4>
+                                            </a>
+                                            <div id="sellsMenuCollapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <a class="nav-link mb-4 ms-3 item" href="{% url 'sells:sells-list'%}"><h4 class="ms-3 me-3">База данных продаж</h4></a>
+                                                    <a class="nav-link mb-4 ms-3 item item-active" href="{% url 'sells:sell-visualization'%}"><h4 class="ms-3 me-3">Визуализация продаж</h4></a>
+                                                    <a class="nav-link mb-4 ms-3 item" href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">Воронка продаж</h4></a>
+                                                    <a class="nav-link mb-4 ms-3 item " href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">План продаж</h4></a>
+                                                    <a class="nav-link mb-4 ms-3 item " href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">Сравнение периодов</h4></a>
+                                                    <a class="nav-link ms-3 item " href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">ML аналитика</h4></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="accordion" id="sells-menu-item-2">
+                                        <div class="accordion-item">
+                                            <a class="nav-link accordion-but mb-4" type="button" data-bs-toggle="collapse" data-bs-target="#sellsMenuCollapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                               <h4>Клиенты</h4>
+                                            </a>
+                                            <div id="sellsMenuCollapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <a class="nav-link mb-4 ms-3 item" href="{% url 'sells:sells-list'%}"><h4 class="ms-3 me-3">Клиентская база данных</h4></a>
+                                                    <a class="nav-link mb-4 ms-3 item" href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">Анализ клиентов</h4></a>
+                                                    <a class="nav-link ms-3 item" href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">Работа с клиентами</h4></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <h4 class="item">Сквозная аналитика</h4>
+                                </div>
+                                <div class="row mb-4">
+                                    <h4 class="item">Мои отчеты</h4>
+                                </div>
+                                <div class="row mb-4">
+                                    <h4 class="item">Складской учет</h4>
+                                </div>
+                                <div class="row mb-4">
+                                    <h4 class="item">BI-аналитика</h4>
+                                </div>
+                                <div class="row mb-4">
+                                    <h4 class="item">Статистика звонков</h4>
+                                </div>
+                                <div class="row mb-4">
+                                    <h4 class="item">Статистика диалогов</h4>
+                                </div>
+                            </div>
+
+{% endblock menu %}
+
 
 {% block content %}
-<div class="row-2 justify-content-start mb-5">
-    <a href="{% url 'sells:sells-list' %}">
-        <button type="button my-2" class="btn btn-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"></path>
-                </svg>
-                Вернуться к таблице
-        </button>
-    </a>
-</div>
+
 <link rel="stylesheet" href="{% static 'sells/css/graphics.css' %}">
 <div class="d-sm-flex justify-content-between align-items-center mb-4">
-    <h3 class="mb-2">Показатели продаж</h3>
+    <h4 class="mb-2">Показатели продаж</h4>
 </div>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>

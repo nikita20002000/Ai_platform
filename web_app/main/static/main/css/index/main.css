@@ -1,14 +1,17 @@
+@import "../colors/colors.css";
+
+
 body {
-    background-color: #072A40;
+    background-color: var(--main-page-color);
 }
 
 
 .navbar-left {
-    background-color: #072A40;
+    background-color: var(--navbar-left-color);
 }
 
 .header {
-    background-color: #072A40;
+    background-color: var(--main-page-color);
     border-bottom: 4px solid #FFFFFF;
 }
 
@@ -21,37 +24,47 @@ footer {
 }
 
 #content {
-        background-color: #072A40;
+        background-color: var(--main-page-color);
 
 }
 
 .dropdown-menu {
-    background-color: rgba(39, 70, 89, 1);
+    background-color: var(--main-page-color);
 }
 
+
+/* ЦВЕТ ЗАДНЕГО ФОНА ВИДЖЕТОВ */
 .widget {
-    background-color: rgba(39, 70, 89, 0.8);
+    background-color: var(--widget-color);
 }
 
-h3 {
-    margin-left: 20px;
-    font-size: 2vw;
-    color: #FFFFFF;
-    font-family: "Proxima Nova";
-    letter-spacing: 8px;
-    font-weight: bold;
+/*h3 {*/
+/*    margin-left: 20px;*/
+/*    font-size: 2vw;*/
+/*    color: var(--header-text-color);*/
+/*    font-family: "Proxima Nova";*/
+/*    letter-spacing: 8px;*/
+/*    font-weight: bold;*/
+/*}*/
+
+
+
+/*ШРИФТЫ*/
+
+h1, h2, h3 {
+    color: var(--header-text-color);
 }
 
-h6 {
-    font-size: 22px;
+h4, h5, h6 {
+    color: var(--text-color);
+}
+
+p, span {
+    color: var(--text-color);
 }
 
 
 
-span, p, h6, h4 {
-    font-family: "Proxima Nova";
-    color: #FFFFFF;
-}
 
 .navbar-left span {
     font-family: "Proxima Nova";
@@ -59,25 +72,37 @@ span, p, h6, h4 {
 
 }
 
+
+/* ЦВЕТ ОТОБРАЖАЕМОЙ ДАТЫ И ВРЕМЕНИ */
 .time-node, .date-node {
     font-weight: bold;
     font-family: monospace;
     font-size: 16px;
-    color: #FFFFFF;
+    color: var(--header-text-color);
 }
 
+
+/* ПРАВЫЙ БОРДЕР У НАВБАРА СЛЕВА */
 .navbar-left {
     border-right: 4px solid #FFFFFF;
 }
+
+
 .dropdown-menu a {
     font-family: "Proxima Nova";
-    color: #FFFFFF;
+    color: var(--text-color);
 }
 
-.fas {
-    color: #FFFFFF;
+
+/* ЦВЕТ ИКНОКИ ПОИСКА */
+.fa-search {
+    color: var(--white-element-color);
 }
 
+/* ЦВЕТ КОЛИЧЕСТВА ПРОПУЩЕННЫХ СООБЩЕНИЙ */
+.nav-link .badge {
+    color: var(--white-element-color)
+}
 
 
 .accordion-item {
@@ -85,13 +110,10 @@ span, p, h6, h4 {
     border: none;
 }
 
-.accordion {
-    background-color: transparent;
-    color: transparent;
-}
+
 
 .nav-link span {
-    color: rgba(255, 255, 255, 0.58);
+    color: var(--text-color);
 }
 
 .active span {
@@ -105,7 +127,12 @@ span, p, h6, h4 {
 .instrument-h h4 {
     font-weight: bold;
     font-family: "Proxima Nova";
-    color: #FFFFFF;
+    color: var(--header-text-color);
     margin-left: 20px;
     font-size: 1.5vw;
 }
+
+form strong {
+    color: var(--text-color);
+}
+
