@@ -20,6 +20,7 @@ class TaskList(LoginRequiredMixin, ListView):
         # Передача данных для конкретного пользователя
         context['tasks'] = context['tasks'].filter(user=self.request.user)
         context['count'] = context['tasks'].filter(complete=False).count()
+        context['done'] = context['tasks'].filter(complete=True).count()
 
         # Логика поиска
         search_input = self.request.GET.get('search-area') or ''

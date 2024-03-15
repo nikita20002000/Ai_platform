@@ -6,85 +6,192 @@
     <h3 class="mb-2"><span id="hello_text"></span> {{user.username}}</h3>
 </div>
 
-<h4 class="mb-3 task-informer">У вас <i id="count_tasks">{{count}}</i> <span id="correct_word"></span></h4>
+<div class="container-fluid task-menu widget card shadow task-menu">
+    <div class="d-flex flex-row" id="bx-component-scope-bitrix_tasks_interface_topmenu_3">
+        <div class="p-2 my-auto task-menu-group-first active-menu-item align-middle">
+            <a href="#" class="align-middle"> Задачи > </a>
+        </div>
+        <div class="p-2 border-item task-menu-group"></div>
+        <div class="p-2 task-menu-group ms-4 me-4">
+            <a href="#" class="">Проекты</a>
+        </div>
+        <div class="p-2 task-menu-group me-4 ms-4">
+            <a href="">Эффективность</a>
+        </div>
+        <div class="p-2 task-menu-group me-4 ms-4">
+            <a href="">Корзина</a>
+        </div>
+        <div class="p-2 task-menu-group me-4 ms-4">
+            <a href="">Еще ˬ</a>
+        </div>
 
+        </div>
+</div>
 
-<a href="{% url 'to_do_list:task-create' %}">
-    <button class="btn btn-primary mb-5" type="button">ДОБАВИТЬ ЗАДАЧУ</button>
-</a>
+<div class="container-fluid mt-4 ps-0 pe-0 task-add-search-panel">
+    <div class="d-flex flex-row">
+        <div class="me-5">
+            <h3>Мои задачи</h3>
+        </div>
 
+        <div class="me-5">
+            <a href="{% url 'to_do_list:task-create' %}">
+                <button class="btn btn-primary mb-5" type="button">ДОБАВИТЬ ЗАДАЧУ</button>
+            </a>
+        </div>
 
-<form method="GET">
-    <div class="row justify-content-end">
-        <div class="col-6 float-right">
-            <div class="input-group mb-3 h-50">
-                <input class="bg-light form-control border-0 small" type="text" placeholder="Поиск по задачам..." name="search-area" value="{{ search_input }}">
-                <button class="btn btn-info py-0" type="submit" value="Search"><i class="fas fa-search"></i>
-                </button>
+        <div class="flex-grow-1">
+            <form method="GET">
+
+                        <div class="input-group mb-3 h-50">
+                            <input class="bg-light form-control border-0 small" type="text" placeholder="Поиск по задачам..." name="search-area" value="{{ search_input }}">
+                            <button class="btn btn-info py-0" type="submit" value="Search"><i class="fas fa-search"></i>
+                            </button>
+                        </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid mt-4 ps-0 pe-0 dop-task-panel">
+    <div class="d-flex flex-row">
+        <div class="d-flex flex-row me-5 widget card shadow">
+            <div class="dop-menu-item me-3 ms-3 dop-menu-item-active">
+                <a href="{% url 'to_do_list:task_list'%}" class="my-auto">Список</a>
+            </div>
+            <div class="dop-menu-item me-3">
+                <a href="">Сроки</a>
+            </div>
+            <div class="dop-menu-item me-3">
+                <a href="">Мой план</a>
+            </div>
+            <div class="dop-menu-item me-3">
+                <a href="">Календарь</a>
+            </div>
+        </div>
+
+        <div class="d-flex flex-row me-5 widget card shadow">
+            <div class="dop-menu-item me-3 ms-3">
+                <a href="">Мои: </a>
+            </div>
+            <div class="dop-menu-item me-3 ms-3">
+                <a href=""><span class="circle-num">{{count}}</span> Незавершенные</a>
+            </div>
+            <div class="dop-menu-item me-3 ms-3">
+                <a href=""><span class="circle-num">{{count}}</span>  Комментарии</a>
+            </div>
+            <div class="dop-menu-item me-3 ms-3">
+                <a href=""><span class="circle-num">{{done}}</span>  Завершенных</a>
+            </div>
+            <div class="dop-menu-item me-3 ms-3">
+                <a href="">Прочитать все</a>
             </div>
         </div>
     </div>
-</form>
+
+</div>
 
 
-<div class="widget card shadow mb-4">
-    <div class="card-header widget py-3">
-        <h4 class=" fw m-0">Список дел</h4>
-    </div>
-    {% for task in tasks %}
-    {% if task.complete %}
-    {% else %}
-    <ul class="list-group list-group-flush">
-        <li class="widget list-group-item">
-            <div class="row align-items-center no-gutters">
+<div class="container-fluid task-panel-list mt-5 widget card shadow">
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th scope="col"><input type="checkbox"></th>
+                <th scope="col"><i class="fa fa-cog" aria-hidden="true"></i></th>
+                <th scope="col">Название</th>
+                <th scope="col">Активность</th>
+                <th scope="col">Крайний срок</th>
+                <th scope="col">Постановщик</th>
+                <th scope="col">Исполнитель</th>
+                <th scope="col">Проект</th>
+                <th scope="col">Теги</th>
+            </tr>
+        </thead>
 
-                <div class="col me-2">
+        <tbody>
+            {% for task in tasks %}
+            {% if task.complete %}
+            {% else %}
+            <tr>
+                <th scope="row"><input type="checkbox"></th>
+                <td><i class="fa fa-bars" aria-hidden="true"></i></td>
+
+                <td>
                     <a href="{% url 'to_do_list:task-update' task.id %}">
-                        <div class="row">
-                            <h6 class="mb-0"><strong>{{ task.title }}</strong></h6><span class="text-xs">{{ task.create }}</span>
-                        </div>
+                        <p>{{task.title}}</p>
                     </a>
-                </div>
+                </td>
+                <td>{{task.create}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.username}}</td>
+                <td>{{task.project}}</td>
+                <td>{{task.tag}}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
 
-                <div class="col-auto">
-                    <a class="delete-link" href="{% url 'to_do_list:task-delete' task.id %}">&#215;</a>
-                </div>
+    </table>
 
+    <div class="d-flex flex-row mt-3 mb-3 justify-content-between">
+        <div class="d-flex flex-row me-5 ">
+            <div class="me-5">
+                <p>ОТМЕЧЕНО 0 / {{count}}</p>
             </div>
-        </li>
-    </ul>
-
-    {% endif %}
-    {% endfor %}
-</div>
-
-<div class="widget card shadow mb-4">
-    <div class="card-header widget py-3">
-        <h6 class=" fw m-0">Завершенные</h6>
+            <div class="me-5">
+                <p>ВСЕГО: <span style="color: var(--link-color)">ПОКАЗАТЬ КОЛИЧЕСТВО</span></p>
+            </div>
+            <div class="me-5 flex-1">
+                <p>СТРАНИЦЫ: 1</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end me-5 ">
+            <div class="me-3 d-flex">
+                <p>НА СТРАНИЦЕ:</p>
+            </div>
+            <div class="d-flex">
+                <select class="form-select" aria-label="Пример выбора по умолчанию">
+                  <option selected></option>
+                  <option value="1">5</option>
+                  <option value="2">10</option>
+                  <option value="3">50</option>
+                  <option value="3">100</option>
+                </select>
+            </div>
+        </div>
     </div>
-    {% for task in tasks %}
-    {% if task.complete %}
-    <ul class="list-group list-group-flush">
-        <li class="widget list-group-item">
-            <div class="row align-items-center no-gutters">
 
-
-                    <div class="col me-2">
-                        <a href="{% url 'to_do_list:task-update' task.id %}">
-                            <i><s><h6 class="mb-0"><strong>{{ task.title }}</strong></h6><span class="text-xs">{{ task.create }}</span></s></i>
-                        </a>
-                    </div>
-
-                <div class="col-auto">
-                    <a class="delete-link" href="{% url 'to_do_list:task-delete' task.id %}">&#215;</a>
-                </div>
+    <div class="d-flex flex-row mb-3">
+        <div class="me-5">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                ВЫБЕРИТЕ ДЕЙСТВИЕ
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Завершить</a></li>
+                <li><a class="dropdown-item" href="#">Указать крайний срок</a></li>
+                <li><a class="dropdown-item" href="#">Сменить исполнителя</a></li>
+                <li><a class="dropdown-item" href="#">Сменить постановщика</a></li>
+                <li><a class="dropdown-item" href="#">Добавить в избранное</a></li>
+                <li><a class="dropdown-item" href="#">Убрать из избранного</a></li>
+                <li><a class="dropdown-item" href="#">Удалить</a></li>
+              </ul>
             </div>
-        </li>
-
-    </ul>
-    {% endif %}
-    {% endfor %}
+        </div>
+        <div class="me-5">
+            <button type="button" class="btn btn-info" style="color: var(--white-element-color)">ПРИМЕНИТЬ</button>
+        </div>
+        <div class="my-auto me-1">
+            <input type="checkbox">
+        </div>
+        <div class="my-auto">
+            <p class="my-auto">ДЛЯ ВСЕХ</p>
+        </div>
+    </div>
 </div>
+
+
 
 <script src={% static "to_do_list/js/to_do_list/task_word_end.js" %}></script>
 

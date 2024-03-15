@@ -1,0 +1,45 @@
+
+/* Переопределение шрифтов бокового меню */
+.crm-menu h3 {
+    font-weight: bold;
+    font-size: calc((100vw - 480px) / (2048 - 480) * (18 - 10) + 16px);
+}
+
+.crm-menu h4 {
+    font-size: calc((100vw - 480px) / (2048 - 480) * (14 - 10) + 16px);
+}
+
+.crm-menu .container {
+    padding: 0;
+}
+
+
+/* Когда боковая кнопка нажата */
+.item-active {
+    background-color: rgb(130, 135, 146);
+    border-radius: 12px;
+    width: fit-content;
+}
+
+.item-active h4 {
+    color: var(--white-element-color);
+}
+
+/* Стили для статичных кнопок Ра*/
+.item {
+    width: fit-content;
+    border-radius: 12px;
+}
+
+/* Когда курсор наведен на элемент */
+.item:hover {
+    background-color: rgb(130, 135, 146);
+    color: var(--white-element-color);
+}
+.item h4:hover {
+    color: var(--white-element-color);
+}
+
+.widget {
+    border-radius: 12px;
+}

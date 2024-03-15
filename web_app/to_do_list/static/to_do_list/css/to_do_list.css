@@ -11,3 +11,69 @@
     font-weight: 900;
     font-size: 22px;
 }
+
+
+/* ВЕРХНЕЕ МЕНЮ ЗАДАЧ */
+.task-menu {
+    height: 60px;
+}
+
+#bx-component-scope-bitrix_tasks_interface_topmenu_3 {
+    height: 100%;
+}
+.task-menu-group-first {
+
+    height: 100%;
+}
+.border-item {
+    border-right: 1px solid var(--text-color);
+
+}
+
+.task-menu a {
+    font-weight: bold;
+    color: var(--header-text-color);
+}
+
+/* Активный элемент меню таск */
+.active-menu-item  {
+    border-bottom: 2px solid blue;
+}
+.active-menu-item a {
+    color: var(--link-color)
+}
+
+/* При наведении на элемент меню таск*/
+.task-menu a:hover {
+    color: var(--link-color)
+}
+
+
+
+/* ПАНЕЛЬ ПОИСКА И ДОБАВЛЕНИЯ ЗАДАЧИ */
+
+.task-add-search-panel {
+    border-bottom: 1px solid var(--text-color);
+}
+
+
+/* ДОПОЛНИТЕЛЬНАЯ ПАНЕЛЬ ПО РАБОТЕ С ЗАДАЧАМИ */
+.dop-menu-item a {
+    vertical-align: center;
+    color: var(--text-color)
+}
+
+.dop-menu-item-active a {
+    text-decoration: underline;
+}
+
+.dop-task-panel .card {
+    border-radius: 10px;
+}
+
+.circle-num {
+    background: #ccc;
+    border-radius: 50%;
+    text-align: center;
+    padding: .3em .65em;
+}
