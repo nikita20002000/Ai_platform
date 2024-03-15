@@ -37,6 +37,24 @@
                         <label for="id_description" class="form-label">Описание</label>
                         <textarea type="text" name="description" class="form-control" id="id_description" rows="3" placeholder="Введите описание задачи...">{{task.description}}</textarea>
                     </div>
+
+
+                    <div class="mb-3">
+                        <label for="id_executor" class="form-label">Исполнитель</label>
+
+                        <textarea type="text" name="executor" class="form-control" id="id_executor" placeholder="Выберите исполнителя">{{task.executor}}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_project" class="form-label">Проекты</label>
+
+                        <textarea type="text" name="project" class="form-control" id="id_project" placeholder="Сделайте привязку к проекту">{{task.project}}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_tags" class="form-label">Теги</label>
+
+                        <textarea type="text" name="tags" class="form-control" id="id_tags" placeholder="Добавьте теги для задачи">{{task.tags}}</textarea>
+                    </div>
+
                     <div class="mb-3">
                         {% if task.complete %}
                         <input class="form-check-input" name="complete" type="checkbox" id="id_complete" checked>
@@ -57,6 +75,7 @@
                         <button class="btn btn-primary mt-2 mb-2" type="submit" value="submit">Добавить задачу</button>
                         {% endif %}
                     </div>
+                    {{ form.errors }}
                 </div>
             </div>
         </div>

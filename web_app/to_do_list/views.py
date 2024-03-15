@@ -48,7 +48,11 @@ class TaskCreate(LoginRequiredMixin, CreateView):
     fields = [
         'title',
         'description',
-        'complete'
+        'executor',
+        'project',
+        'tags',
+        'complete',
+
     ]
 
     success_url = reverse_lazy('to_do_list:task_list')
@@ -64,6 +68,9 @@ class TaskUpdate(UpdateView):
     fields = [
         'title',
         'description',
+        'executor',
+        'project',
+        'tags',
         'complete'
     ]
     success_url = reverse_lazy('to_do_list:task_list')
