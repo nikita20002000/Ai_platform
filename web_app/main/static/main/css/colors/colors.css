@@ -10,4 +10,13 @@
     --white-element-color: #FFFFFF;
 
     --link-color: #3030dc;
+
+    --green-widget-header-color: rgb(150, 157, 55);
+    --green-widget-body-color: rgb(145, 174, 62);
+
+    --blue-widget-header-color: rgb(99, 160, 197);
+    --blue-widget-body-color: rgb(102, 164, 204);
+
+    --red-widget-header-color: rgb(192, 87, 80);
+    --red-widget-body-color: rgb(197, 89, 82);
 }

@@ -81,3 +81,25 @@ class DeleteTask(DeleteView):
     context_object_name = 'task'
 
     success_url = reverse_lazy('to_do_list:task_list')
+
+
+
+# ОБРАБОТКА ПАРАМЕТРОВ view СТРАНИЦЫ ЭФФЕКТИВНОСТИ
+class Efficiency(LoginRequiredMixin, ListView):
+    model = Task
+
+    template_name = 'efficiency/efficiency.html'
+
+    context_object_name = 'tasks'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Передача данных для конкретного пользователя
+        context['tasks'] = context['tasks'].filter(user=self.request.user)
+        context['count'] = context['tasks'].filter(complete=False).count()
+        context['done'] = context['tasks'].filter(complete=True).count()
+        context['all_tasks'] = context['tasks'].count()
+        context['percent_done'] = int((context['tasks'].filter(complete=True).count() / context['tasks'].count()) * 100)
+
+        return context

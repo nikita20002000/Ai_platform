@@ -77,3 +77,76 @@
     text-align: center;
     padding: .3em .65em;
 }
+
+
+/*СТРАНИЦЫ ЭФФЕКТИВНОСТИ*/
+
+.line-divider {
+    border-bottom: 0.2px solid var(--text-color);
+}
+
+/* Установка цветов хедеров виджетов */
+.green-header {
+    background-color: var(--green-widget-header-color);
+}
+
+.green-header h4, .blue-header h4, .red-header h4 {
+    color: var(--white-element-color);
+}
+
+.blue-header {
+    background-color:  var(--blue-widget-header-color);
+}
+
+.red-header {
+    background-color: var(--red-widget-header-color);
+}
+
+.widget-effect-percent, .widget-in-work, .widget-complete, .comments-for-task {
+    border-radius: 20px;
+}
+
+.blue-header, .green-header, .red-header {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.widget-body {
+    height: 200px;
+}
+
+/* Установка цветов боди виджетов */
+
+.blue-body {
+    background-color: var(--blue-widget-body-color);
+}
+
+.green-body {
+    background-color: var(--green-widget-body-color);
+}
+
+.red-body {
+    background-color: var(--red-widget-body-color);
+}
+
+.blue-body, .green-body, .red-body {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+
+/* Значения в виджете */
+.widget-value {
+    position: absolute;
+    bottom: 15px;
+    right: 24px;
+    color: var(--white-element-color);
+    font-size: 36px;
+}
+
+
+.percent-value {
+    font-size: 72px;
+    border: solid 10px var(--blue-widget-body-color);
+    border-radius: 50%;
+}

@@ -1,0 +1,117 @@
+{% extends 'to_do_list/template_to_do_list.html' %}
+
+{% block content %}
+{% load static %}
+<div class="d-sm-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-2"><span id="hello_text"></span> {{user.username}}</h3>
+</div>
+
+<div class="container-fluid task-menu widget card shadow task-menu">
+    <div class="d-flex flex-row" id="bx-component-scope-bitrix_tasks_interface_topmenu_3">
+        <div class="p-2 my-auto task-menu-group-first align-middle">
+            <a href="{% url 'to_do_list:task_list' %}" class="align-middle"> Задачи > </a>
+        </div>
+        <div class="p-2 border-item task-menu-group"></div>
+        <div class="p-2 task-menu-group ms-4 me-4">
+            <a href="#" class="">Проекты</a>
+        </div>
+        <div class="p-2 task-menu-group me-4 ms-4 active-menu-item">
+            <a href="{% url 'to_do_list:efficiency' %}">Эффективность</a>
+        </div>
+        <div class="p-2 task-menu-group me-4 ms-4">
+            <a href="">Корзина</a>
+        </div>
+        <div class="p-2 task-menu-group me-4 ms-4">
+            <a href="">Еще ˬ</a>
+        </div>
+
+        </div>
+</div>
+
+<div class="container-fluid mt-4 ps-0 pe-0 task-add-search-panel">
+    <div class="d-flex flex-row">
+        <div class="me-5">
+            <h3>Эффективность</h3>
+        </div>
+
+        <div class="flex-grow-1 me-5">
+            <form method="GET">
+
+                        <div class="input-group mb-3 h-50">
+                            <input class="bg-light form-control border-0 small" type="text" placeholder="Поиск по задачам..." name="search-area" value="{{ search_input }}">
+                            <button class="btn btn-info py-0" type="submit" value="Search"><i class="fas fa-search"></i>
+                            </button>
+                        </div>
+            </form>
+        </div>
+
+        <div class="ms-5 me-5">
+            <a href="{% url 'to_do_list:task-create' %}">
+                <button class="btn btn-primary mb-5" type="button">ДОБАВИТЬ ЗАДАЧУ</button>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid mt-5 p-0">
+    <div class="row">
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xxl-6 pe-4">
+            <div class="widget-effect-percent card shadow h-100">
+
+                <div class="effect-card-header">
+                    <h4 class="ms-3 me-3 mb-3 mt-3">Эффективность</h4>
+                </div>
+                <div class="line-divider ms-3 me-3"></div>
+                <div class="widget-body-main my-auto mx-auto">
+                    <p class="text-center percent-value">{{percent_done}} %</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xxl-6 pe-5">
+            <div class="row pb-3">
+                <div class="col-12">
+                    <div class="widget-in-work card shadow h-100">
+                        <div class="effect-card-header blue-header">
+                            <h4 class="ms-3 me-3 mb-3 mt-3" >Всего в работе</h4>
+                        </div>
+                        <div class="widget-body blue-body">
+                            <div class="widget-value">{{all_tasks}}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-6 pe-4">
+                    <div class="widget-complete card shadow">
+                        <div class="effect-card-header green-header">
+                            <h4 class="ms-3 me-3 mb-3 mt-3">Завершено задач</h4>
+                        </div>
+                        <div class="widget-body green-body">
+                            <div class="widget-value">{{done}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 p-0">
+                    <div class="comments-for-task card shadow">
+                        <div class="effect-card-header red-header">
+                            <h4 class="ms-3 me-3 mb-3 mt-3">Замечания</h4>
+                        </div>
+
+                        <div class="widget-body red-body">
+                            <div class="widget-value">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

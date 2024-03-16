@@ -35,7 +35,6 @@ class TaskList(LoginRequiredMixin, ListView):
                 title__icontains=search_input)
 
         context['search_input'] = search_input
-
         return context
 
 

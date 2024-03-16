@@ -9,14 +9,14 @@
 <div class="container-fluid task-menu widget card shadow task-menu">
     <div class="d-flex flex-row" id="bx-component-scope-bitrix_tasks_interface_topmenu_3">
         <div class="p-2 my-auto task-menu-group-first active-menu-item align-middle">
-            <a href="#" class="align-middle"> Задачи > </a>
+            <a href="{% url 'to_do_list:task_list' %}" class="align-middle"> Задачи > </a>
         </div>
         <div class="p-2 border-item task-menu-group"></div>
         <div class="p-2 task-menu-group ms-4 me-4">
             <a href="#" class="">Проекты</a>
         </div>
         <div class="p-2 task-menu-group me-4 ms-4">
-            <a href="">Эффективность</a>
+            <a href="{% url 'to_do_list:efficiency' %}">Эффективность</a>
         </div>
         <div class="p-2 task-menu-group me-4 ms-4">
             <a href="">Корзина</a>
