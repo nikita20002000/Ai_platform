@@ -1,19 +1,23 @@
 {% extends 'base/page/base.html' %}
 {% load static %}
 
+
 {% block title %}
-<title>Задачи и проекты</title>
+<title>Проекты</title>
 {% endblock title %}
+
 
 {%block styles %}
 <link rel="stylesheet" href="{% static 'to_do_list/css/to_do_list.css' %}">
 {% endblock styles%}
+
 
 {% block sidebar %}
 
 {% include 'base/page/sidebar.html' with taskpage="active" %}
 
 {% endblock sidebar %}
+
 
 {% block navbar %}
 
@@ -25,12 +29,12 @@
 {% block pagecontent %}
 <div class="container-fluid main-page mt-5">
     {% include "base/to_do_list/hello_text.html" %}
-    {% include "base/to_do_list/navigation.html" with active1="active-menu-item" %}
+    {% include "base/to_do_list/navigation.html" with active2="active-menu-item" %}
 
     <div class="container-fluid mt-4 ps-0 pe-0 task-add-search-panel">
         <div class="d-flex flex-row">
             <div class="me-5">
-                <h3>Мои задачи</h3>
+                <h3>Мои проекты</h3>
             </div>
 
             <div class="me-5">
@@ -55,21 +59,6 @@
 
     <div class="container-fluid mt-4 ps-0 pe-0 dop-task-panel">
         <div class="d-flex flex-row">
-            <div class="d-flex flex-row me-5 widget card shadow">
-                <div class="dop-menu-item me-3 ms-3 dop-menu-item-active">
-                    <a href="{% url 'to_do_list:task_list'%}" class="my-auto">Список</a>
-                </div>
-                <div class="dop-menu-item me-3">
-                    <a href="">Сроки</a>
-                </div>
-                <div class="dop-menu-item me-3">
-                    <a href="">Мой план</a>
-                </div>
-                <div class="dop-menu-item me-3">
-                    <a href="">Календарь</a>
-                </div>
-            </div>
-
             <div class="d-flex flex-row me-5 widget card shadow">
                 <div class="dop-menu-item me-3 ms-3">
                     <a href="">Мои: </a>
@@ -191,7 +180,6 @@
         </div>
     </div>
 </div>
-
 
 {% include 'base/page/chatbot.html' %}
 {% endblock pagecontent %}

@@ -1,6 +1,30 @@
-{% extends 'sells/template_sells.html' %}
+{% extends 'base/page/base.html' %}
+{% load static %}
 
-{% block content %}
+{% block title %}
+<title>Создание записи</title>
+{% endblock title %}
+
+{%block styles %}
+<link rel="stylesheet" href="{% static 'sells/css/sells.css' %}">
+{% endblock styles%}
+
+{% block sidebar %}
+
+{% include 'base/page/sidebar.html' with crmpage="active" %}
+
+{% endblock sidebar %}
+
+
+
+{% block navbar %}
+
+{% include 'base/page/navbar.html' %}
+
+{% endblock navbar %}
+
+
+{% block pagecontent %}
 <div class="row-2 justify-content-start mb-5">
     <a href="{% url 'sells:sells-list' %}">
         <button type="button my-2" class="btn btn-primary">
@@ -89,5 +113,8 @@
         </div>
     </div>
 </form>
+{% include 'base/page/chatbot.html' %}
+{% endblock pagecontent %}
 
-{% endblock content %}
+{% block scripts %}
+{% endblock scripts %}

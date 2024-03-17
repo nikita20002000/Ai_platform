@@ -1,0 +1,59 @@
+{% load static %}
+<div class="container">
+    <div class="row mb-4">
+        <h3>CRM-аналитика</h3>
+    </div>
+    <div class="row mb-4">
+        <div class="accordion" id="sells-menu-item-1">
+            <div class="accordion-item">
+                <a class="nav-link accordion-but mb-4" type="button" data-bs-toggle="collapse" data-bs-target="#sellsMenuCollapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h4>Продажи</h4>
+                </a>
+                <div id="sellsMenuCollapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <a class="nav-link mb-4 ms-3 {{sellslist}} item" href="{% url 'sells:sells-list'%}"><h4 class="ms-3 me-3">База данных продаж</h4></a>
+                        <a class="nav-link mb-4 ms-3 {{visualization}} item" href="{% url 'sells:sell-visualization'%}"><h4 class="ms-3 me-3">Визуализация продаж</h4></a>
+                        <a class="nav-link mb-4 ms-3 item" href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">Воронка продаж</h4></a>
+                        <a class="nav-link mb-4 ms-3 item " href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">План продаж</h4></a>
+                        <a class="nav-link mb-4 ms-3 item " href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">Сравнение периодов</h4></a>
+                        <a class="nav-link ms-3 item " href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">ML аналитика</h4></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="accordion" id="sells-menu-item-2">
+            <div class="accordion-item">
+                <a class="nav-link accordion-but mb-4" type="button" data-bs-toggle="collapse" data-bs-target="#sellsMenuCollapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                    <h4>Клиенты</h4>
+                </a>
+                <div id="sellsMenuCollapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <a class="nav-link mb-4 ms-3 item" href="{% url 'sells:sells-list'%}"><h4 class="ms-3 me-3">Клиентская база данных</h4></a>
+                        <a class="nav-link mb-4 ms-3 item" href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">Анализ клиентов</h4></a>
+                        <a class="nav-link ms-3 item" href="{% url 'to_do_list:task_list'%}"><h4 class="ms-3 me-3">Работа с клиентами</h4></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <h4 class="item">Сквозная аналитика</h4>
+    </div>
+    <div class="row mb-4">
+        <h4 class="item">Мои отчеты</h4>
+    </div>
+    <div class="row mb-4">
+        <h4 class="item">Складской учет</h4>
+    </div>
+    <div class="row mb-4">
+        <h4 class="item">BI-аналитика</h4>
+    </div>
+    <div class="row mb-4">
+        <h4 class="item">Статистика звонков</h4>
+    </div>
+    <div class="row mb-4">
+        <h4 class="item">Статистика диалогов</h4>
+    </div>
+</div>

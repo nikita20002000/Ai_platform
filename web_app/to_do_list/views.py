@@ -2,12 +2,13 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from .models import Task
+from .models import Task, Project
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
+# VIEW отображения задачи (LISTVIEW) с передачей контекста в html шаблоны
 class TaskList(LoginRequiredMixin, ListView):
     model = Task
     template_name = 'to_do_list/task_list.html'
@@ -34,6 +35,7 @@ class TaskList(LoginRequiredMixin, ListView):
         return context
 
 
+# VIEW отображения to_string задачи
 class TaskDetail(DetailView):
     model = Task
     template_name = 'to_do_list/task.html'
@@ -41,6 +43,7 @@ class TaskDetail(DetailView):
     context_object_name = 'task'
 
 
+# VIEW создания новой задачи
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     template_name = 'to_do_list/task_form.html'
@@ -101,5 +104,24 @@ class Efficiency(LoginRequiredMixin, ListView):
         context['done'] = context['tasks'].filter(complete=True).count()
         context['all_tasks'] = context['tasks'].count()
         context['percent_done'] = int((context['tasks'].filter(complete=True).count() / context['tasks'].count()) * 100)
+
+        return context
+
+
+class ProjectList(LoginRequiredMixin, ListView):
+
+    model = Project
+
+    template_name = 'projects/project-list.html'
+
+    context_object_name = 'projects'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Передача данных для конкретного пользователя
+        context['projects'] = context['projects'].filter(user=self.request.user)
+        context['count'] = context['projects'].count()
+        context['active'] = 'active-menu-item'
 
         return context

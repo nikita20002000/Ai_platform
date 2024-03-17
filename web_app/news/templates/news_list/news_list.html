@@ -1,57 +1,83 @@
-{% extends 'news_list/news_list_template.html' %}
-
-{% block content %}
+{% extends 'base/page/base.html' %}
 {% load static %}
+
+{% block title %}
+<title>Лента</title>
+{% endblock title %}
+
+
+{% block styles %}
 <link rel="stylesheet" href="{% static 'news/css/news.css' %}">
+{% endblock styles %}
 
 
-<form method="POST">
-    <div class="row justify-content-end">
+{% block sidebar %}
 
-        <div class="col-6 float-right">
-            <div class="input-group mb-5 h-50">
+{% include 'base/page/sidebar.html' with newspage="active" %}
+
+{% endblock sidebar %}
+
+
+{% block navbar %}
+
+{% include 'base/page/navbar.html' %}
+
+{% endblock navbar %}
+
+
+{% block pagecontent %}
+<div class="container-fluid main-page mt-5">
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="mb-2">Лента</h3>
+    </div>
+    <form method="POST">
+        <div class="row justify-content-end">
+
+            <div class="col-6 float-right">
+                <div class="input-group mb-5 h-50">
                     {% csrf_token %}
                     <input class="bg-light form-control border-0 small" type="text" placeholder="Введите ключевое слово для фильтра новостей..." name="topic_theme" value="{{ topic_theme }}">
                     <button class="btn btn-info py-0" type="submit" value="Search"><i class="fas fa-search"></i>
                     </button>
+                </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+    <div class="row ">
+        {% for new in news %}
 
-<div class="row ">
-            {% for new in news %}
-
-    <div class="col-4 col-sm-4 col-lg-4 col-xl-4 col-xxl-4 p-rl-1 p-b-2">
-        <div class="container news-card">
-            <div class="container image-1">
-                <a href={{new.url}}>
-                    {% if new.image %}
-                    <img src={{new.image}}  class="img-fluid rounded" alt="тут должна быть картинка :(">
-                    {% else %}
-                    <img src="{% static 'news/img/error.jpg' %}"  class="img-fluid rounded" alt="тут должна быть картинка :(">
-                    {% endif %}
-                </a>
-            </div>
-            <div class="divider-extra-small"></div>
-            <div class="container date text-end mr-5">
-                <p>{{new.published}}</p>
-            </div>
-            <div class="container recent-header m-2">
-                <a href={{new.url}}>
-                    <h4>{{new.title}}</h4>
-                </a>
-            </div>
-            <div class="container recent-intro m-2">
-                <p class="main-par">{{new.description}}</p>
+        <div class="col-4 col-sm-4 col-lg-4 col-xl-4 col-xxl-4 p-rl-1 p-b-2">
+            <div class="container news-card">
+                <div class="container image-1">
+                    <a href={{new.url}}>
+                        {% if new.image %}
+                        <img src={{new.image}}  class="img-fluid rounded" alt="тут должна быть картинка :(">
+                        {% else %}
+                        <img src="{% static 'news/img/error.jpg' %}"  class="img-fluid rounded" alt="тут должна быть картинка :(">
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="divider-extra-small"></div>
+                <div class="container date text-end mr-5">
+                    <p>{{new.published}}</p>
+                </div>
+                <div class="container recent-header m-2">
+                    <a href={{new.url}}>
+                        <h4>{{new.title}}</h4>
+                    </a>
+                </div>
+                <div class="container recent-intro m-2">
+                    <p class="main-par">{{new.description}}</p>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 
+{% endblock pagecontent %}
 
+{% block scripts %}
 
+{% endblock scripts %}
 
-
-{% endblock content %}

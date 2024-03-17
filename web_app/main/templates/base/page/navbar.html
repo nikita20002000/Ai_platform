@@ -1,95 +1,5 @@
-<!doctype html>
 {% load static %}
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Панель инструментов</title>
-
-    <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
-
-    <link rel="stylesheet" href="{% static 'main/css/index/main.css' %}">
-    <link rel="stylesheet" href="{% static 'main/css/effects/loader.css' %}">
-    <link rel="stylesheet" href="{% static 'finance/css/finance.css' %}">
-    <script src="https://kit.fontawesome.com/29c67175bf.js" crossorigin="anonymous"></script>
-    <style>
-        a {
-            text-decoration: none;
-        }
-    </style>
-
-</head>
-<body id="page-top">
-    <div id="wrapper">
-        <nav class="navbar-left align-items-start sidebar sidebar-dark accordion  p-0">
-            <div class="container-fluid d-flex flex-column p-0">
-                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="{% url 'main:home' %}">
-                    <div class="sidebar-brand-icon rotate-n-15">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card-2-front" viewBox="0 0 16 16">
-                          <path d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
-                          <path d="M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
-                        </svg>
-                    </div>
-
-                    <div class="sidebar-brand-text mx-3">
-                        <span>Business AI</span>
-                    </div>
-                </a>
-                <hr class="sidebar-divider my-0">
-                <ul class="navbar-nav menu-left-list text-light mt-5" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'main:home' %}"><i class="fas fa-tachometer-alt"></i><span>Панель инструментов</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'main:profile' %}"><i class="fas fa-user"></i><span>Профиль</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'news:news_list'%}"><i class="fa fa-newspaper-o"></i><span>Лента</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'to_do_list:task_list'%}"><i class="fas fa-table"></i><span>Задачи и проекты</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'sells:sells-list'%}"><i class="fa fa-suitcase"></i><span>CRM аналитика</span></a></li>
-
-
-                    <li class="nav-item">
-                        <div class="accordion" id="accordionExample">
-                            <div class="accordion-item">
-                                <a class="nav-link accordion-but" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <i class="fa fa-shopping-cart"></i><span>Маркетинг</span>
-                                </a>
-                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <a class="nav-link" href="{% url 'to_do_list:task_list'%}"><span>Анализ трендов</span></a>
-                                        <a class="nav-link" href="{% url 'to_do_list:task_list'%}"><span>Анализ продукта</span></a>
-                                        <a class="nav-link" href="{% url 'to_do_list:task_list'%}"><span>Создание тренда</span></a>
-                                        <a class="nav-link" href="{% url 'to_do_list:task_list'%}"><span>AI копирайт</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="accordion">
-                            <div class="accordion-item">
-                                <a class="nav-link accordion-but" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
-                                    <i class="fa fa-rub"></i><span>Финансы</span>
-                                </a>
-                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        {% block urls %}
-<!--                                        <a class="nav-link active" href="{% url 'finance:finance_home'%}"><i class="fa fa-power-off glow-icon" aria-hidden="true"></i><span>Инструменты</span></a>-->
-<!--                                        <a class="nav-link" href="{% url 'finance:analytics'%}"><span>Аналитика</span></a>-->
-                                        {% endblock %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'to_do_list:task_list'%}"><i class="fa fa-cubes"></i><span>ML аналитика</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'to_do_list:task_list'%}"><i class="fa fa-folder-open"></i><span>Анализ данных</span></a></li>
-
-
-                </ul>
-
-                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
-            </div>
-        </nav>
-        <div class="d-flex flex-column" id="content-wrapper">
-            <div id="content">
-                <nav class="navbar header navbar-expand shadow mb-4 topbar static-top">
+<nav class="navbar header navbar-expand shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
                             <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..."><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
@@ -180,13 +90,14 @@
                             </li>
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-white-600 small">{{ user.username }}</span>
-                                    {% if user.profile.img %}
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-white-600 small">{{ user.username }}</span>
+                                        {% if user.profile.img %}
                                         <img class="border rounded-circle img-profile" src="../media/{{user.profile.img}}">
                                         {% else %}
                                         <img class="border rounded-circle img-profile" src="../media/images/default_avatar.png">
                                         {% endif %}
-                                </a>
+                                    </a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
 
                                         <a class="dropdown-item" href="{% url 'main:profile' %}">
@@ -213,38 +124,4 @@
                     </div>
                 </nav>
 
-                <div class="container-fluid main-page mt-5">
-                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="mb-2">Финансы</h3>
-                    </div>
-                    {% block content %}
-
-                    {% endblock content%}
-
-
-                </div>
-            </div>
-            <footer class="sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Business AI Platform 2024</span></div>
-                </div>
-            </footer>
-        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    </div>
-    <div class="loaderArea">
-       <div class="loader"></div>
-    </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!--    <script src="//cdn.jsdelivr.net/npm/jquery.marquee@1.6.0/jquery.marquee.min.js" type="text/javascript"></script>-->
-    <script src={% static "main/js/login-reg/loader.js" %}></script>
-    <script src={% static "main/js/main/theme.js" %}></script>
-    <script src={% static "main/js/main/date_time.js" %}></script>
-    <script src={% static "finance/js/running_str.js" %}></script>
-    <script src={% static "finance/js/heights_script.js" %}></script>
-</body>
-</html>
-
+<script src={% static "main/js/main/date_time.js" %}></script>

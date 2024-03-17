@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.dispatch import receiver
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
-
+from to_do_list.models import Project
 
 class Image(models.Model):
     title = models.CharField(max_length=200)
@@ -15,12 +15,13 @@ class Image(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
     role = models.CharField(max_length=30, blank=True)
     address = models.TextField(max_length=100, blank=True)
     city = models.CharField(max_length=30, blank=True)
     country = models.CharField(max_length=30, blank=True)
     img = models.ImageField(upload_to='images')
+
+    team = models.ForeignKey(Project, related_name='profiles', on_delete=models.CASCADE, null=True, default=None)
 
 # @receiver(post_save, sender=User)
 # def create_user_profile(sender, instance, created, **kwargs):

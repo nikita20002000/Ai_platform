@@ -1,517 +1,540 @@
-{% extends 'finance/finance_template.html' %}
-
-{% block urls %}
-<a class="nav-link active" href="{% url 'finance:finance_home'%}"><i class="fa fa-power-off glow-icon" aria-hidden="true"></i><span>Инструменты</span></a>
-<a class="nav-link" href="{% url 'finance:analytics'%}"><span>Аналитика</span></a>
-{% endblock %}
-
-{% block content %}
+{% extends 'base/page/base.html' %}
 {% load static %}
 
-<section class="container item mb-5"></section>
-  <div class="row finance-header">
-    <div class="col-4 col-md-4 col-xl-4 col-xxl-4 finance-header-buttons">
-      <div class="row d-flex my-auto h-100">
-        <div class="col-6 col-md-6 col-xl-6 col-xxl-6 instrument-pag text-center my-auto"><a class="nav-link active" href="{% url 'finance:finance_home'%}"><button type="button" class="btn btn-primary">Показатели</button></a></div>
-          <div class="col-6 col-md-6 col-xl-6 col-xxl-6 instrument-pag text-center my-auto"><a class="nav-link active" href="{% url 'finance:visualize'%}"><button type="button" class="btn btn-secondary">Визуализация</button></a></div>
+{% block title %}
+<title>Дэшборд финансы</title>
+{% endblock title %}
 
-      </div>
+{%block styles %}
+<link rel="stylesheet" href="{% static 'finance/css/finance.css' %}">
+{% endblock styles%}
+
+{% block sidebar %}
+
+{% include 'base/page/sidebar.html' with financepage="active"  financehomepage="active" icon1='<i class="fa fa-power-off glow-icon" aria-hidden="true"></i>' %}
+
+{% endblock sidebar %}
+
+
+{% block navbar %}
+
+{% include 'base/page/navbar.html' %}
+
+{% endblock navbar %}
+
+{% block pagecontent %}
+<div class="container-fluid main-page mt-5">
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="mb-2">Финансы</h3>
     </div>
+    <section class="container item mb-5"></section>
+          <div class="row finance-header">
+            <div class="col-4 col-md-4 col-xl-4 col-xxl-4 finance-header-buttons">
+              <div class="row d-flex my-auto h-100">
+                <div class="col-6 col-md-6 col-xl-6 col-xxl-6 instrument-pag text-center my-auto"><a class="nav-link active" href="{% url 'finance:finance_home'%}"><button type="button" class="btn btn-primary">Показатели</button></a></div>
+                  <div class="col-6 col-md-6 col-xl-6 col-xxl-6 instrument-pag text-center my-auto"><a class="nav-link active" href="{% url 'finance:visualize'%}"><button type="button" class="btn btn-secondary">Визуализация</button></a></div>
 
-    <div class="col-8 col-md-8 col-xl-8 col-xxl-8">
-          <!-- TradingView Widget BEGIN -->
-        <div class="tradingview-widget-container d-flex align-self-center">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-          {
-          "symbols": [
-            {
-              "proName": "FOREXCOM:SPXUSD",
-              "title": "S&P 500 Index"
-            },
-            {
-              "proName": "FX_IDC:EURUSD",
-              "title": "EUR to USD"
-            },
-            {
-              "proName": "BITSTAMP:BTCUSD",
-              "title": "Bitcoin"
-            },
-            {
-              "proName": "BITSTAMP:ETHUSD",
-              "title": "Ethereum"
-            },
-            {
-              "description": "EUR TO RUB",
-              "proName": "FX:EURUSD"
-            },
-            {
-              "description": "meta",
-              "proName": "NASDAQ:META"
-            },
-            {
-              "description": "us dollar index",
-              "proName": "CAPITALCOM:DXY"
-            },
-            {
-              "description": "meme",
-              "proName": "BINANCE:MEMEUSDT"
-            },
-            {
-              "description": "tesla",
-              "proName": "NASDAQ:TSLA"
-            },
-            {
-              "description": "solusdt",
-              "proName": "BINANCE:SOLUSDT"
-            },
-            {
-              "description": "microsoft",
-              "proName": "NASDAQ:MSFT"
-            },
-            {
-              "description": "US REPO DATE",
-              "proName": "ECONOMICS:USRR"
-            }
-          ],
-          "showSymbolLogo": true,
-          "isTransparent": true,
-          "displayMode": "adaptive",
-          "colorTheme": "dark",
-          "locale": "ru"
-        }
-          </script>
+              </div>
+            </div>
+
+            <div class="col-8 col-md-8 col-xl-8 col-xxl-8">
+                  <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container d-flex align-self-center">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                  {
+                  "symbols": [
+                    {
+                      "proName": "FOREXCOM:SPXUSD",
+                      "title": "S&P 500 Index"
+                    },
+                    {
+                      "proName": "FX_IDC:EURUSD",
+                      "title": "EUR to USD"
+                    },
+                    {
+                      "proName": "BITSTAMP:BTCUSD",
+                      "title": "Bitcoin"
+                    },
+                    {
+                      "proName": "BITSTAMP:ETHUSD",
+                      "title": "Ethereum"
+                    },
+                    {
+                      "description": "EUR TO RUB",
+                      "proName": "FX:EURUSD"
+                    },
+                    {
+                      "description": "meta",
+                      "proName": "NASDAQ:META"
+                    },
+                    {
+                      "description": "us dollar index",
+                      "proName": "CAPITALCOM:DXY"
+                    },
+                    {
+                      "description": "meme",
+                      "proName": "BINANCE:MEMEUSDT"
+                    },
+                    {
+                      "description": "tesla",
+                      "proName": "NASDAQ:TSLA"
+                    },
+                    {
+                      "description": "solusdt",
+                      "proName": "BINANCE:SOLUSDT"
+                    },
+                    {
+                      "description": "microsoft",
+                      "proName": "NASDAQ:MSFT"
+                    },
+                    {
+                      "description": "US REPO DATE",
+                      "proName": "ECONOMICS:USRR"
+                    }
+                  ],
+                  "showSymbolLogo": true,
+                  "isTransparent": true,
+                  "displayMode": "adaptive",
+                  "colorTheme": "dark",
+                  "locale": "ru"
+                }
+                  </script>
+                </div>
+                <!-- TradingView Widget END -->
+
+            </div>
+          </div>
+        </section>
+        <div class="row mt-5 ticker-list">
+            <div class="d-sm-flex justify-content-between align-items-center mb-2">
+                <h2 class="mb-2">Отслеживание показателей</h2>
+            </div>
         </div>
-        <!-- TradingView Widget END -->
+        <div class="row mt-3 equal">
+          <div class="col-lg-6 col-xl-6">
+            <div class="widget card shadow mb-4">
+              <div class="card-header widget d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold m-0">Валюты</h6>
+                <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                  <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                    <p class="text-center dropdown-header">Меню</p><a class="dropdown-item" href="#">&nbsp;Смотреть все</a><a class="dropdown-item" href="#">&nbsp;Another action</a>
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#">&nbsp;</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body val-catalogue flex-1" id="card-body-main">
+                  <div class="row">
+                      <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col"><p>Название</p></th>
+                          <th scope="col"><p>Цена</p></th>
+                          <th scope="col"><p>За день</p></th>
+                          <th scope="col"><p>За год</p></th>
+                          <th scope="col"><p class="text-end">Динамика</p></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">
+                              <div class="row">
+                                  <div class="col-4 col-md-4 col-lg-4 col-xl-4">
+                                      <img
+                                            class="img-fluid"
+                                            alt=""
+                                            src="{% static 'finance/img/flags/icons8_круговой_флаг_европейского_союза_48.png' %}"
+                                          />
+                                  </div>
+                                  <div class="col-8 col-md-8 col-lg-8 col-xl-8">
+                                        <p class="">ЕВРО</p>
+                                        <p class="">EURRUB</p>
+                                  </div>
+                              </div>
 
-    </div>
-  </div>
-</section>
-<div class="row mt-5 ticker-list">
-    <div class="d-sm-flex justify-content-between align-items-center mb-2">
-        <h2 class="mb-2">Отслеживание показателей</h2>
-    </div>
-</div>
-<div class="row mt-3 equal">
-  <div class="col-lg-6 col-xl-6">
-    <div class="widget card shadow mb-4">
-      <div class="card-header widget d-flex justify-content-between align-items-center">
-        <h6 class="fw-bold m-0">Валюты</h6>
-        <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
-          <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
-            <p class="text-center dropdown-header">Меню</p><a class="dropdown-item" href="#">&nbsp;Смотреть все</a><a class="dropdown-item" href="#">&nbsp;Another action</a>
-            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">&nbsp;</a>
+                          </th>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">p+3,22%</p></td>
+                          <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                              <div class="row">
+                                  <div class="col-4 col-md-4 col-lg-4 col-xl-4">
+                                      <img
+                                            class="img-fluid"
+                                            alt=""
+                                            src="{% static 'finance/img/flags/pngwing.com.png' %}"
+                                          />
+                                  </div>
+                                  <div class="col-8 col-md-8 col-lg-8 col-xl-8">
+                                        <p class="">ФУНТ СТЕРЛИНГОВ</p>
+                                        <p class="">PNDRUB</p>
+                                  </div>
+                              </div>
+                          </th>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">+3,22%</p></td>
+                          <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                              <div class="row">
+                                  <div class="col-4 col-md-4 col-lg-4 col-xl-4">
+                                      <img
+                                            class="img-fluid"
+                                            alt=""
+                                            src="{% static 'finance/img/flags/ellipse-3224@2x.png' %}"
+                                          />
+                                  </div>
+                                  <div class="col-8 col-md-8 col-lg-8 col-xl-8">
+                                        <p class="">ДОЛЛАР США</p>
+                                        <p class="">USDRUB</p>
+                                  </div>
+                              </div>
+                          </th>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">+3,22%</p></td>
+                          <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">
+                              <div class="row">
+                                  <div class="col-4 col-md-4 col-lg-4 col-xl-4">
+                                      <img
+                                            class="img-fluid"
+                                            alt=""
+                                            src="{% static 'finance/img/flags/icons8-швейцария-48.png' %}"
+                                          />
+                                  </div>
+                                  <div class="col-8 col-md-8 col-lg-8 col-xl-8">
+                                        <p class="">ШВЕЙЦАРСКИЙ ФРАНК</p>
+                                        <p class="">FRRUB</p>
+                                  </div>
+                              </div>
+                          </th>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">+3,22%</p></td>
+                          <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">
+                              <div class="row">
+                                  <div class="col-4 col-md-4 col-lg-4 col-xl-4">
+                                      <img
+                                            class="img-fluid"
+                                            alt=""
+                                            src="{% static 'finance/img/flags/kaz.png' %}"
+                                          />
+                                  </div>
+                                  <div class="col-8 col-md-8 col-lg-8 col-xl-8">
+                                        <p class="">ТЕНГЕ</p>
+                                        <p class="">TNGRUB</p>
+                                  </div>
+                              </div>
+                          </th>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">+3,22%</p></td>
+                          <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">
+                              <div class="row">
+                                  <div class="col-4 col-md-4 col-lg-4 col-xl-4">
+                                      <img
+                                            class="img-fluid"
+                                            alt=""
+                                            src="{% static 'finance/img/flags/tur.png' %}"
+                                          />
+                                  </div>
+                                  <div class="col-8 col-md-8 col-lg-8 col-xl-8">
+                                        <p class="">ТУРЕЦКАЯ ЛИРА</p>
+                                        <p class="">TLRRUB</p>
+                                  </div>
+                              </div>
+                          </th>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">+3,22%</p></td>
+                          <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">
+                              <div class="row">
+                                  <div class="col-4 col-md-4 col-lg-4 col-xl-4">
+                                      <img
+                                            class="img-fluid"
+                                            alt=""
+                                            src="{% static 'finance/img/flags/icons8-япония-48.png' %}"
+                                          />
+                                  </div>
+                                  <div class="col-8 col-md-8 col-lg-8 col-xl-8">
+                                        <p class="">ЯПОНСКАЯ ИЕНА</p>
+                                        <p class="">IENRUB</p>
+                                  </div>
+                              </div>
+                          </th>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">+3,22%</p></td>
+                          <td><p class="">+3,22%</p></td>
+                          <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
+                        </tr>
+
+
+
+                      </tbody>
+                  </table>
+              </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-6 col-xl-6 mt-lg-0 mt-sm-5 mt-md-0 mt-xxl-0">
+            <div class="widget card shadow mb-4">
+              <div class="card-header widget d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold m-0">Экономический календарь</h6>
+
+              </div>
+              <div class="card-body val-catalogue flex-1" id="card-body">
+                  <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+                  {
+                  "width": "100%",
+                  "height": "100%",
+                  "colorTheme": "dark",
+                  "isTransparent": true,
+                  "locale": "ru",
+                  "importanceFilter": "-1,0,1",
+                  "countryFilter": "ar,au,br,ca,cn,fr,de,in,id,it,jp,kr,mx,ru,sa,za,tr,gb,us,eu"
+                }
+                  </script>
+                </div>
+        <!-- TradingView Widget END -->
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="card-body val-catalogue flex-1" id="card-body-main">
-          <div class="row">
-              <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col"><p>Название</p></th>
-                  <th scope="col"><p>Цена</p></th>
-                  <th scope="col"><p>За день</p></th>
-                  <th scope="col"><p>За год</p></th>
-                  <th scope="col"><p class="text-end">Динамика</p></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">
-                      <div class="row">
-                          <div class="col-4 col-md-4 col-lg-4 col-xl-4">
-                              <img
-                                    class="img-fluid"
-                                    alt=""
-                                    src="{% static 'finance/img/flags/icons8_круговой_флаг_европейского_союза_48.png' %}"
-                                  />
-                          </div>
-                          <div class="col-8 col-md-8 col-lg-8 col-xl-8">
-                                <p class="">ЕВРО</p>
-                                <p class="">EURRUB</p>
-                          </div>
-                      </div>
-
-                  </th>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">p+3,22%</p></td>
-                  <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                      <div class="row">
-                          <div class="col-4 col-md-4 col-lg-4 col-xl-4">
-                              <img
-                                    class="img-fluid"
-                                    alt=""
-                                    src="{% static 'finance/img/flags/pngwing.com.png' %}"
-                                  />
-                          </div>
-                          <div class="col-8 col-md-8 col-lg-8 col-xl-8">
-                                <p class="">ФУНТ СТЕРЛИНГОВ</p>
-                                <p class="">PNDRUB</p>
-                          </div>
-                      </div>
-                  </th>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">+3,22%</p></td>
-                  <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                      <div class="row">
-                          <div class="col-4 col-md-4 col-lg-4 col-xl-4">
-                              <img
-                                    class="img-fluid"
-                                    alt=""
-                                    src="{% static 'finance/img/flags/ellipse-3224@2x.png' %}"
-                                  />
-                          </div>
-                          <div class="col-8 col-md-8 col-lg-8 col-xl-8">
-                                <p class="">ДОЛЛАР США</p>
-                                <p class="">USDRUB</p>
-                          </div>
-                      </div>
-                  </th>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">+3,22%</p></td>
-                  <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">
-                      <div class="row">
-                          <div class="col-4 col-md-4 col-lg-4 col-xl-4">
-                              <img
-                                    class="img-fluid"
-                                    alt=""
-                                    src="{% static 'finance/img/flags/icons8-швейцария-48.png' %}"
-                                  />
-                          </div>
-                          <div class="col-8 col-md-8 col-lg-8 col-xl-8">
-                                <p class="">ШВЕЙЦАРСКИЙ ФРАНК</p>
-                                <p class="">FRRUB</p>
-                          </div>
-                      </div>
-                  </th>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">+3,22%</p></td>
-                  <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">
-                      <div class="row">
-                          <div class="col-4 col-md-4 col-lg-4 col-xl-4">
-                              <img
-                                    class="img-fluid"
-                                    alt=""
-                                    src="{% static 'finance/img/flags/kaz.png' %}"
-                                  />
-                          </div>
-                          <div class="col-8 col-md-8 col-lg-8 col-xl-8">
-                                <p class="">ТЕНГЕ</p>
-                                <p class="">TNGRUB</p>
-                          </div>
-                      </div>
-                  </th>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">+3,22%</p></td>
-                  <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">
-                      <div class="row">
-                          <div class="col-4 col-md-4 col-lg-4 col-xl-4">
-                              <img
-                                    class="img-fluid"
-                                    alt=""
-                                    src="{% static 'finance/img/flags/tur.png' %}"
-                                  />
-                          </div>
-                          <div class="col-8 col-md-8 col-lg-8 col-xl-8">
-                                <p class="">ТУРЕЦКАЯ ЛИРА</p>
-                                <p class="">TLRRUB</p>
-                          </div>
-                      </div>
-                  </th>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">+3,22%</p></td>
-                  <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">
-                      <div class="row">
-                          <div class="col-4 col-md-4 col-lg-4 col-xl-4">
-                              <img
-                                    class="img-fluid"
-                                    alt=""
-                                    src="{% static 'finance/img/flags/icons8-япония-48.png' %}"
-                                  />
-                          </div>
-                          <div class="col-8 col-md-8 col-lg-8 col-xl-8">
-                                <p class="">ЯПОНСКАЯ ИЕНА</p>
-                                <p class="">IENRUB</p>
-                          </div>
-                      </div>
-                  </th>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">+3,22%</p></td>
-                  <td><p class="">+3,22%</p></td>
-                  <td class="text-end"><button type="button" class="btn btn-info">Смотреть подробнее</button></td>
-                </tr>
-
-
-
-              </tbody>
-          </table>
-      </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-lg-6 col-xl-6 mt-lg-0 mt-sm-5 mt-md-0 mt-xxl-0">
-    <div class="widget card shadow mb-4">
-      <div class="card-header widget d-flex justify-content-between align-items-center">
-        <h6 class="fw-bold m-0">Экономический календарь</h6>
-
-      </div>
-      <div class="card-body val-catalogue flex-1" id="card-body">
-          <!-- TradingView Widget BEGIN -->
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
-          {
-          "width": "100%",
-          "height": "100%",
-          "colorTheme": "dark",
-          "isTransparent": true,
-          "locale": "ru",
-          "importanceFilter": "-1,0,1",
-          "countryFilter": "ar,au,br,ca,cn,fr,de,in,id,it,jp,kr,mx,ru,sa,za,tr,gb,us,eu"
-        }
-          </script>
-        </div>
-<!-- TradingView Widget END -->
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row mt-5 ticker-list">
-    <div class="d-sm-flex justify-content-between align-items-center mb-2">
-        <h2 class="mb-2">Отслеживаемые тикеры</h2><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#">+</i>&nbsp;Добавить тикер</a>
-    </div>
-</div>
-
-
-<div class="row mt-3">
-    <div class="col-md-6 col-xl-3 mb-4">
-        <div class="widget card shadow border-start-primary py-2">
-            <div class="card-body">
-                <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
-                <!-- TradingView Widget BEGIN -->
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
-                        {
-                            "symbol": "OANDA:EURAUD",
-                            "width": "100%",
-                            "isTransparent": true,
-                            "colorTheme": "dark",
-                            "locale": "en"
-                        }
-                    </script>
-                </div>
-                <!-- TradingView Widget END -->
+        <div class="row mt-5 ticker-list">
+            <div class="d-sm-flex justify-content-between align-items-center mb-2">
+                <h2 class="mb-2">Отслеживаемые тикеры</h2><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#">+</i>&nbsp;Добавить тикер</a>
             </div>
         </div>
-    </div>
-    <div class="col-md-6 col-xl-3 mb-4">
-        <div class="widget card shadow border-start-success py-2">
-            <div class="card-body">
-                <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
-                <!-- TradingView Widget BEGIN -->
-                <div class="tradingview-widget-container">
 
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
-                        {
-                            "symbol": "BITFINEX:BTCUSD",
-                            "width": "100%",
-                            "isTransparent": true,
-                            "colorTheme": "dark",
-                            "locale": "en"
+
+        <div class="row mt-3">
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="widget card shadow border-start-primary py-2">
+                    <div class="card-body">
+                        <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                                {
+                                    "symbol": "OANDA:EURAUD",
+                                    "width": "100%",
+                                    "isTransparent": true,
+                                    "colorTheme": "dark",
+                                    "locale": "en"
+                                }
+                            </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="widget card shadow border-start-success py-2">
+                    <div class="card-body">
+                        <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container">
+
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                                {
+                                    "symbol": "BITFINEX:BTCUSD",
+                                    "width": "100%",
+                                    "isTransparent": true,
+                                    "colorTheme": "dark",
+                                    "locale": "en"
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="widget card shadow border-start-info py-2">
+                    <div class="card-body">
+                        <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                                {
+                                    "symbol": "BMFBOVESPA:RUB1!",
+                                    "width": "100%",
+                                    "isTransparent": true,
+                                    "colorTheme": "dark",
+                                    "locale": "en"
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="widget card shadow border-start-warning py-2">
+                    <div class="card-body">
+                        <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                                {
+                                    "symbol": "NASDAQ:TSLA",
+                                    "width": "100%",
+                                    "isTransparent": true,
+                                    "colorTheme": "dark",
+                                    "locale": "en"
+                                }
+                            </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="widget card shadow border-start-primary py-2">
+                    <div class="card-body">
+                        <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
+
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container">
+                          <div class="tradingview-widget-container__widget"></div>
+                          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                          {
+                          "symbol": "FX_IDC:RUBUSD",
+                          "width": "100%",
+                          "isTransparent": true,
+                          "colorTheme": "dark",
+                          "locale": "en"
                         }
-                    </script>
+                          </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="widget card shadow border-start-primary py-2">
+                    <div class="card-body">
+                        <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
+
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container">
+                          <div class="tradingview-widget-container__widget"></div>
+                          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                          {
+                          "symbol": "NYMEX:CL1!",
+                          "width": "100%",
+                          "isTransparent": true,
+                          "colorTheme": "dark",
+                          "locale": "en"
+                        }
+                          </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="widget card shadow border-start-primary py-2">
+                    <div class="card-body">
+                        <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
+
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container">
+                          <div class="tradingview-widget-container__widget"></div>
+                          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                          {
+                          "symbol": "MOEX:NG1!",
+                          "width": "100%",
+                          "isTransparent": true,
+                          "colorTheme": "dark",
+                          "locale": "en"
+                        }
+                          </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-6 col-xl-3 mb-4">
-        <div class="widget card shadow border-start-info py-2">
-            <div class="card-body">
-                <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
-                <!-- TradingView Widget BEGIN -->
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
-                        {
-                            "symbol": "BMFBOVESPA:RUB1!",
-                            "width": "100%",
-                            "isTransparent": true,
-                            "colorTheme": "dark",
-                            "locale": "en"
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-xl-3 mb-4">
-        <div class="widget card shadow border-start-warning py-2">
-            <div class="card-body">
-                <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
-                <!-- TradingView Widget BEGIN -->
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
-                        {
-                            "symbol": "NASDAQ:TSLA",
-                            "width": "100%",
-                            "isTransparent": true,
-                            "colorTheme": "dark",
-                            "locale": "en"
-                        }
-                    </script>
-                </div>
-                <!-- TradingView Widget END -->
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-xl-3 mb-4">
-        <div class="widget card shadow border-start-primary py-2">
-            <div class="card-body">
-                <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
 
-                <!-- TradingView Widget BEGIN -->
+        <div class="row mt-5 ticker-list">
+            <div class="d-sm-flex justify-content-between align-items-center mb-2">
+                <h2 class="mb-2">Продвинутый скринер</h2>
+            </div>
+        </div>
+
+        <div class="row mt-3 equal">
+          <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+            <div class="widget card shadow mb-4">
+              <div class="card-header widget d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold m-0">Widget Скринер</h6>
+                <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                  <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                    <p class="text-center dropdown-header">Меню</p><a class="dropdown-item" href="#">&nbsp;Смотреть все</a><a class="dropdown-item" href="#">&nbsp;Another action</a>
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#">&nbsp;</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body val-catalogue flex-1" id="card-body-main">
+                           <!-- TradingView Widget BEGIN -->
                 <div class="tradingview-widget-container">
                   <div class="tradingview-widget-container__widget"></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
                   {
-                  "symbol": "FX_IDC:RUBUSD",
-                  "width": "100%",
-                  "isTransparent": true,
+                  "width": "auto",
+                  "height": "523",
+                  "defaultColumn": "overview",
+                  "defaultScreen": "above_52wk_high",
+                  "market": "forex",
+                  "showToolbar": true,
                   "colorTheme": "dark",
-                  "locale": "en"
+                  "locale": "ru",
+                  "isTransparent": true
                 }
                   </script>
                 </div>
                 <!-- TradingView Widget END -->
+              </div>
             </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-xl-3 mb-4">
-        <div class="widget card shadow border-start-primary py-2">
-            <div class="card-body">
-                <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
-
-                <!-- TradingView Widget BEGIN -->
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
-                  {
-                  "symbol": "NYMEX:CL1!",
-                  "width": "100%",
-                  "isTransparent": true,
-                  "colorTheme": "dark",
-                  "locale": "en"
-                }
-                  </script>
-                </div>
-                <!-- TradingView Widget END -->
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6 col-xl-3 mb-4">
-        <div class="widget card shadow border-start-primary py-2">
-            <div class="card-body">
-                <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">&#215;<span class="visually-hidden">Удалить тикер</span></span>
-
-                <!-- TradingView Widget BEGIN -->
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
-                  {
-                  "symbol": "MOEX:NG1!",
-                  "width": "100%",
-                  "isTransparent": true,
-                  "colorTheme": "dark",
-                  "locale": "en"
-                }
-                  </script>
-                </div>
-                <!-- TradingView Widget END -->
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row mt-5 ticker-list">
-    <div class="d-sm-flex justify-content-between align-items-center mb-2">
-        <h2 class="mb-2">Продвинутый скринер</h2>
-    </div>
-</div>
-
-<div class="row mt-3 equal">
-  <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
-    <div class="widget card shadow mb-4">
-      <div class="card-header widget d-flex justify-content-between align-items-center">
-        <h6 class="fw-bold m-0">Widget Скринер</h6>
-        <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
-          <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
-            <p class="text-center dropdown-header">Меню</p><a class="dropdown-item" href="#">&nbsp;Смотреть все</a><a class="dropdown-item" href="#">&nbsp;Another action</a>
-            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">&nbsp;</a>
           </div>
         </div>
-      </div>
-      <div class="card-body val-catalogue flex-1" id="card-body-main">
-                   <!-- TradingView Widget BEGIN -->
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-          {
-          "width": "auto",
-          "height": "523",
-          "defaultColumn": "overview",
-          "defaultScreen": "above_52wk_high",
-          "market": "forex",
-          "showToolbar": true,
-          "colorTheme": "dark",
-          "locale": "ru",
-          "isTransparent": true
-        }
-          </script>
-        </div>
-        <!-- TradingView Widget END -->
-      </div>
-    </div>
-  </div>
 </div>
 
+{% include 'base/page/chatbot.html' %}
+{% endblock pagecontent %}
 
 
 
-
-<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-qFOQ9YFAeGj1gDOuUD61g3D+tLDv3u1ECYWqT82WQoaWrOhAY+5mRMTTVsQdWutbA5FORCnkEPEgU0OF8IzGvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
-{% endblock content %}
+{% block scripts %}
+<script src={% static "finance/js/running_str.js" %}></script>
+<script src={% static "finance/js/heights_script.js" %}></script>
+{% endblock scripts %}
