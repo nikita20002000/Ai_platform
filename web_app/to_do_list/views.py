@@ -108,6 +108,28 @@ class Efficiency(LoginRequiredMixin, ListView):
         return context
 
 
+
+
+
+
+# ОБРАБОТКА ПРОЕКТОВ
+
+class ProjectCreate(LoginRequiredMixin, CreateView):
+    model = Project
+    template_name = 'projects/project_form.html'
+
+    fields = [
+        'name',
+        'description',
+    ]
+
+    success_url = reverse_lazy('to_do_list:project-list')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(ProjectCreate, self).form_valid(form)
+
+
 class ProjectList(LoginRequiredMixin, ListView):
 
     model = Project
@@ -125,3 +147,13 @@ class ProjectList(LoginRequiredMixin, ListView):
         context['active'] = 'active-menu-item'
 
         return context
+
+class ProjectUpdate(LoginRequiredMixin, UpdateView):
+    model = Project
+    template_name = 'projects/project_form.html'
+    fields = [
+        'name',
+        'description',
+    ]
+    success_url = reverse_lazy('to_do_list:project-list')
+

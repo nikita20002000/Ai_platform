@@ -38,8 +38,8 @@
             </div>
 
             <div class="me-5">
-                <a href="{% url 'to_do_list:task-create' %}">
-                    <button class="btn btn-primary mb-5" type="button">ДОБАВИТЬ ЗАДАЧУ</button>
+                <a href="{% url 'to_do_list:project-create' %}">
+                    <button class="btn btn-primary mb-5" type="button">СОЗДАТЬ</button>
                 </a>
             </div>
 
@@ -47,7 +47,7 @@
                 <form method="GET">
 
                             <div class="input-group mb-3 h-50">
-                                <input class="bg-light form-control border-0 small" type="text" placeholder="Поиск по задачам..." name="search-area" value="{{ search_input }}">
+                                <input class="bg-light form-control border-0 small" type="text" placeholder="Поиск по проектам..." name="search-area" value="{{ search_input }}">
                                 <button class="btn btn-info py-0" type="submit" value="Search"><i class="fas fa-search"></i>
                                 </button>
                             </div>
@@ -88,17 +88,14 @@
                     <th scope="col"><input type="checkbox"></th>
                     <th scope="col"><i class="fa fa-cog" aria-hidden="true"></i></th>
                     <th scope="col">Название</th>
-                    <th scope="col">Активность</th>
-                    <th scope="col">Крайний срок</th>
-                    <th scope="col">Постановщик</th>
-                    <th scope="col">Исполнитель</th>
-                    <th scope="col">Проект</th>
-                    <th scope="col">Теги</th>
+                    <th scope="col">Описание</th>
+                    <th scope="col">Дата создания</th>
+
                 </tr>
             </thead>
 
             <tbody>
-                {% for task in tasks %}
+                {% for project in projects %}
                 {% if task.complete %}
                 {% else %}
                 <tr>
@@ -106,16 +103,13 @@
                     <td><i class="fa fa-bars" aria-hidden="true"></i></td>
 
                     <td>
-                        <a href="{% url 'to_do_list:task-update' task.id %}">
-                            <p>{{task.title}}</p>
+                        <a href="{% url 'to_do_list:project-update' project.id %}">
+                            <p>{{project.name}}</p>
                         </a>
                     </td>
-                    <td>{{task.create}}</td>
-                    <td>{{task.deadline}}</td>
-                    <td>{{user.username}}</td>
-                    <td>{{task.executor}}</td>
-                    <td>{{task.project}}</td>
-                    <td>{{task.tags}}</td>
+                    <td>{{project.description}}</td>
+                    <td>{{project.created_at}}</td>
+
                 </tr>
                 {% endif %}
                 {% endfor %}

@@ -13,6 +13,10 @@ from to_do_list.models import Task
 from sells.models import Sell
 from to_do_list.views import TaskList
 
+from django.views.generic.detail import DetailView
+
+
+
 class TaskList(LoginRequiredMixin, ListView):
     model = Task
     template_name = 'main/index.html'
@@ -25,7 +29,6 @@ class TaskList(LoginRequiredMixin, ListView):
         # Передача данных для конкретного пользователя
         context['tasks'] = context['tasks'].filter(user=self.request.user)
         context['count'] = context['tasks'].filter(complete=False).count()
-
 
         # Логика поиска
         search_input = self.request.GET.get('search-area') or ''
@@ -54,7 +57,7 @@ class SellsList(LoginRequiredMixin, ListView):
         # CБОР ДАННЫХ ПО СТАТУСУ ОПЛАТЫ
         mid_dict_3 = {}
         for k in context['sells']:
-            mid_dict_3[k.status] = mid_dict_3.get(j.status, 0) + 1
+            mid_dict_3[k.status] = mid_dict_3.get(k.status, 0) + 1
 
 
         context = {

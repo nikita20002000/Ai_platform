@@ -25,9 +25,10 @@ class Task(models.Model):
 
 class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    members = models.ManyToManyField(User, related_name='projects')
     name = models.CharField(max_length=100)
+    description = models.TextField(max_length=200, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    complete = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
