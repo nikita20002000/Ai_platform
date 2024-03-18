@@ -80,99 +80,42 @@
 
     </div>
 
-
-    <div class="container-fluid task-panel-list mt-5 widget card shadow">
-        <table class="table table-bordered mt-3">
-            <thead>
-                <tr>
-                    <th scope="col"><input type="checkbox"></th>
-                    <th scope="col"><i class="fa fa-cog" aria-hidden="true"></i></th>
-                    <th scope="col">Название</th>
-                    <th scope="col">Описание</th>
-                    <th scope="col">Дата создания</th>
-
-                </tr>
-            </thead>
-
-            <tbody>
-                {% for project in projects %}
-                {% if task.complete %}
-                {% else %}
-                <tr>
-                    <th scope="row"><input type="checkbox"></th>
-                    <td><i class="fa fa-bars" aria-hidden="true"></i></td>
-
-                    <td>
+    <div class="container-fluid mt-5">
+        <div class="row">
+            {% for project in projects %}
+            {% if project.complete %}
+            {% else %}
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-3 pe-4 pb-4">
+                    <div class="project-card {{project.project_color}} h-100">
                         <a href="{% url 'to_do_list:project-update' project.id %}">
-                            <p>{{project.name}}</p>
+                             <div class="project-card-header {{project.project_color}}-header">
+                                 <h3 class="ms-3 me-3 mb-3 mt-3 pt-3 pb-3 pe-3">{{project.name}}</h3>
+                             </div>
                         </a>
-                    </td>
-                    <td>{{project.description}}</td>
-                    <td>{{project.created_at}}</td>
+                        <div class="project-card-body">
+                            <p class="pe-3 ps-3 pb-5">
+                                {{project.description}}
+                            </p>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="project-card-footer">
+                            <div class="">
 
-                </tr>
-                {% endif %}
-                {% endfor %}
-            </tbody>
 
-        </table>
+                            </div>
+                        </div>
+                        <a href="{% url 'to_do_list:project-update' project.id %}">
+                            <i class="fa fa-paint-brush" aria-hidden="true" style="color: var(--white-element-color)"></i>
+                        </a>
+                    </div>
 
-        <div class="d-flex flex-row mt-3 mb-3 justify-content-between">
-            <div class="d-flex flex-row me-5 ">
-                <div class="me-5">
-                    <p>ОТМЕЧЕНО 0 / {{count}}</p>
-                </div>
-                <div class="me-5">
-                    <p>ВСЕГО: <span style="color: var(--link-color)">ПОКАЗАТЬ КОЛИЧЕСТВО</span></p>
-                </div>
-                <div class="me-5 flex-1">
-                    <p>СТРАНИЦЫ: 1</p>
-                </div>
             </div>
-            <div class="d-flex justify-content-end me-5 ">
-                <div class="me-3 d-flex">
-                    <p>НА СТРАНИЦЕ:</p>
-                </div>
-                <div class="d-flex">
-                    <select class="form-select" aria-label="Пример выбора по умолчанию">
-                      <option selected></option>
-                      <option value="1">5</option>
-                      <option value="2">10</option>
-                      <option value="3">50</option>
-                      <option value="3">100</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="d-flex flex-row mb-3">
-            <div class="me-5">
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    ВЫБЕРИТЕ ДЕЙСТВИЕ
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Завершить</a></li>
-                    <li><a class="dropdown-item" href="#">Указать крайний срок</a></li>
-                    <li><a class="dropdown-item" href="#">Сменить исполнителя</a></li>
-                    <li><a class="dropdown-item" href="#">Сменить постановщика</a></li>
-                    <li><a class="dropdown-item" href="#">Добавить в избранное</a></li>
-                    <li><a class="dropdown-item" href="#">Убрать из избранного</a></li>
-                    <li><a class="dropdown-item" href="#">Удалить</a></li>
-                  </ul>
-                </div>
-            </div>
-            <div class="me-5">
-                <button type="button" class="btn btn-info" style="color: var(--white-element-color)">ПРИМЕНИТЬ</button>
-            </div>
-            <div class="my-auto me-1">
-                <input type="checkbox">
-            </div>
-            <div class="my-auto">
-                <p class="my-auto">ДЛЯ ВСЕХ</p>
-            </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
+
+
 </div>
 
 {% include 'base/page/chatbot.html' %}

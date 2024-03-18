@@ -73,6 +73,47 @@
                             {% endif %}
                         </div>
                         <div class="mb-3">
+                            <label for="id_project_color" class="form-label">Цвет карточки</label>
+                                <select id="id_project_color" class="form-select" name="project_color">
+
+                                    {% if project.project_color == "COLOR_SYSTEM" %}
+                                      <option value="COLOR_SYSTEM" selected>Системный</option>
+                                    {% else %}
+                                        <option value="COLOR_SYSTEM">Системный</option>
+                                    {% endif %}
+
+                                    {% if project.project_color == "COLOR_CHOICE_DEEP_BLUE" %}
+                                      <option value="COLOR_CHOICE_DEEP_BLUE" selected>Синий</option>
+                                    {% else %}
+                                        <option value="COLOR_CHOICE_DEEP_BLUE">Синий</option>
+                                    {% endif %}
+
+                                    {% if project.project_color == "COLOR_CHOICE_BLUE" %}
+                                      <option value="COLOR_CHOICE_BLUE" selected>Голубой</option>
+                                    {% else %}
+                                      <option value="COLOR_CHOICE_BLUE">Голубой</option>
+                                    {% endif %}
+
+                                    {% if project.project_color == "COLOR_CHOICE_GREEN" %}
+                                      <option value="COLOR_CHOICE_GREEN" selected>Зеленый</option>
+                                    {% else %}
+                                      <option value="COLOR_CHOICE_GREEN">Зеленый</option>
+                                    {% endif %}
+
+                                    {% if project.project_color == "COLOR_CHOICE_LIGHT_YELLOW" %}
+                                      <option value="COLOR_CHOICE_LIGHT_YELLOW" selected>Желтый</option>
+                                    {% else %}
+                                    <option value="COLOR_CHOICE_LIGHT_YELLOW">Желтый</option>
+                                    {% endif %}
+
+                                    {% if project.project_color == "COLOR_CHOICE_ORANGE" %}
+                                      <option value="COLOR_CHOICE_ORANGE" selected>Оранжевый</option>
+                                    {% else %}
+                                      <option value="COLOR_CHOICE_ORANGE">Оранжевый</option>
+                                    {% endif %}
+                                </select>
+                        </div>
+                        <div class="mb-3">
                             {% if project %}
                             <button class="btn btn-success mt-2 mb-2" type="submit" value="submit">Сохранить изменения</button>
                             {% else %}

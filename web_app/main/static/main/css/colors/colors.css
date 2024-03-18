@@ -19,4 +19,23 @@
 
     --red-widget-header-color: rgb(192, 87, 80);
     --red-widget-body-color: rgb(197, 89, 82);
+
+    --color-choice-deep-blue: #0f5abd;
+    --color-choice-deep-blue-header: #08397a;
+
+    --color-choice-blue: #0FC9F2;
+    --color-choice-blue-header: #0d93b2;
+
+    --color-choice-green: #12A68B;
+    --color-choice-green-header: #118673;
+
+    --color-choice-light-yellow: #D99A25;
+    --color-choice-light-yellow-header: #a1731c;
+
+    --color-choice-orange: #D95407;
+    --color-choice-orange-header: #9d4610;
+
+
+    --system-deep-blue-first-color: #253f73;
+    --system-deep-blue-second-color: #2f477a;
 }

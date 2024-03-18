@@ -30,5 +30,29 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
 
+    COLOR_CHOICE_DEEP_BLUE = 'COLOR_CHOICE_DEEP_BLUE'
+    COLOR_CHOICE_BLUE = 'COLOR_CHOICE_BLUE'
+    COLOR_CHOICE_GREEN = 'COLOR_CHOICE_GREEN'
+    COLOR_CHOICE_LIGHT_YELLOW = 'COLOR_CHOICE_LIGHT_YELLOW'
+    COLOR_CHOICE_ORANGE = 'COLOR_CHOICE_ORANGE'
+    COLOR_SYSTEM = 'COLOR_SYSTEM'
+
+    COLOR_CHOICES = {
+        COLOR_SYSTEM: 'system',
+        COLOR_CHOICE_DEEP_BLUE: 'Синий',
+        COLOR_CHOICE_BLUE: 'Голубой',
+        COLOR_CHOICE_GREEN: 'Зеленый',
+        COLOR_CHOICE_LIGHT_YELLOW: 'Желтый',
+        COLOR_CHOICE_ORANGE: 'Оранжевый',
+    }
+
+    project_color = models.CharField(
+        max_length=40,
+        choices=COLOR_CHOICES,
+        default=COLOR_SYSTEM
+    )
+
+
+
     def __str__(self):
         return self.name

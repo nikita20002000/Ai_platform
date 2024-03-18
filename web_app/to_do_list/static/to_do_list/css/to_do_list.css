@@ -150,3 +150,97 @@
     border: solid 10px var(--blue-widget-body-color);
     border-radius: 50%;
 }
+
+
+/*СТРАНИЦА ПРОЕКТОВ*/
+.project-card-header {
+    background-color: #253f73;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.project-card{
+    background-color: #2f477a;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.project-card-header h3 {
+    color: var(--white-element-color);
+}
+
+.project-card-body p {
+    color: var(--text-color);
+}
+
+.project-card-footer {
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+
+}
+
+.divider {
+    height: 75px;
+}
+
+.project-card {
+    position: relative;
+}
+
+
+.project-card i {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+
+/*Кастомные цвета блоков проектов*/
+.COLOR_CHOICE_GREEN {
+    background-color: var(--color-choice-green);
+}
+
+.COLOR_CHOICE_GREEN p, .COLOR_CHOICE_DEEP_BLUE p, .COLOR_CHOICE_BLUE p, .COLOR_CHOICE_LIGHT_YELLOW p, .COLOR_CHOICE_ORANGE p {
+    color: var(--white-element-color);
+}
+
+.COLOR_CHOICE_GREEN-header {
+    background-color: var(--color-choice-green-header);
+}
+
+.COLOR_CHOICE_DEEP_BLUE {
+    background-color: var(--color-choice-deep-blue);
+}
+
+.COLOR_CHOICE_DEEP_BLUE-header {
+    background-color: var(--color-choice-deep-blue-header);
+}
+
+.COLOR_CHOICE_BLUE {
+    background-color: var(--color-choice-blue);
+}
+
+.COLOR_CHOICE_BLUE-header {
+    background-color: var(--color-choice-blue-header);
+}
+
+.COLOR_CHOICE_LIGHT_YELLOW {
+    background-color: var(--color-choice-light-yellow);
+}
+
+.COLOR_CHOICE_LIGHT_YELLOW-header {
+    background-color: var(--color-choice-light-yellow-header);
+}
+
+.COLOR_CHOICE_ORANGE {
+    background-color: var(--color-choice-orange);
+}
+
+.COLOR_CHOICE_ORANGE-header {
+    background-color: var(--color-choice-orange-header);
+}
+
+
+

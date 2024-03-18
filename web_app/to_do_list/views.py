@@ -121,6 +121,8 @@ class ProjectCreate(LoginRequiredMixin, CreateView):
     fields = [
         'name',
         'description',
+        'complete',
+        'project_color',
     ]
 
     success_url = reverse_lazy('to_do_list:project-list')
@@ -154,6 +156,8 @@ class ProjectUpdate(LoginRequiredMixin, UpdateView):
     fields = [
         'name',
         'description',
+        'complete',
+        'project_color',
     ]
     success_url = reverse_lazy('to_do_list:project-list')
 
