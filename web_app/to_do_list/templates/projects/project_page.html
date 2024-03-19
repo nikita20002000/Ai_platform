@@ -1,13 +1,15 @@
 {% extends 'base/page/base.html' %}
 {% load static %}
 
+
 {% block title %}
-<title>Задачи и проекты</title>
+<title>Проекты</title>
 {% endblock title %}
 
 {%block styles %}
 <link rel="stylesheet" href="{% static 'to_do_list/css/to_do_list.css' %}">
 {% endblock styles%}
+
 
 {% block sidebar %}
 
@@ -23,19 +25,61 @@
 
 
 {% block pagecontent %}
+<div class="row-2 justify-content-start mb-5 me-5 ms-5">
+        <a href="{% url 'to_do_list:project-list' %}">
+            <button type="button my-2" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"></path>
+                    </svg>
+                    Вернуться назад
+            </button>
+        </a>
+</div>
 <div class="container-fluid main-page mt-5">
-    {% include "base/to_do_list/hello_text.html" %}
-    {% include "base/to_do_list/navigation.html" with active1="active-menu-item" %}
+    <div class="container-fluid task-menu widget card shadow task-menu {{project.project_color}}-header">
+        <div class="d-flex flex-row my-auto justify-content-between" id="bx-component-scope-tasks_interface_topmenu_header">
+            <div class="d-flex flex-row my-auto">
+                <div class="p-2 my-auto project-icon">
+                    <i class="fa fa-folder my-auto" aria-hidden="true"></i>
+                </div>
+                 <div class="p-2 my-auto detail-project-name">
+                    <h3 class="my-auto">{{project.name}}</h3>
+                </div>
+            </div>
 
-    <div class="container-fluid mt-4 ps-0 pe-0 task-add-search-panel">
-        <div class="d-flex flex-row">
+           <div class="d-flex flex-row my-auto">
+               <div class="p-2 my-auto status-project me-5 ms-5">
+                   <h4 class="my-auto">
+                       Статус:&nbsp
+                       {% if project.complete %}
+                       <span class="done">Выполнен</span>
+                       {% else %}
+                       <span class="in-work">В работе</span>
+                       {% endif %}
+                   </h4>
+               </div>
+                <div class="p-2 my-auto d-flex justify-content-end">
+                    <p class="d-flex my-auto me-5">
+                        Дата создания: {{project.created_at}}
+                    </p>
+                </div>
+           </div>
+
+        </div>
+    </div>
+
+    {% include "base/to_do_list/projects_navigation.html" with active1="active-menu-item" %}
+</div>
+
+<div class="container-fluid mt-4 ps-0 pe-0 task-add-search-panel">
+        <div class="d-flex flex-row pe-5 ps-5">
             <div class="me-5">
-                <h3>Мои задачи</h3>
+                <h3>Задачи проекта</h3>
             </div>
 
             <div class="me-5">
-                <a href="{% url 'to_do_list:task-create' %}">
-                    <button class="btn btn-primary mb-5" type="button">ДОБАВИТЬ ЗАДАЧУ</button>
+                <a href="{% url 'to_do_list:project-create' %}">
+                    <button class="btn btn-primary mb-5" type="button">СОЗДАТЬ</button>
                 </a>
             </div>
 
@@ -52,8 +96,7 @@
 
         </div>
     </div>
-
-    <div class="container-fluid mt-4 ps-0 pe-0 dop-task-panel">
+<div class="container-fluid mt-4 ps-5 pe-5 dop-task-panel">
         <div class="d-flex flex-row">
             <div class="d-flex flex-row me-5 widget card shadow">
                 <div class="dop-menu-item me-3 ms-3 dop-menu-item-active">
@@ -89,11 +132,10 @@
             </div>
         </div>
 
-    </div>
+</div>
 
-
-    <div class="container-fluid task-panel-list mt-5 widget card shadow">
-        <table class="table table-bordered mt-3">
+<div class="container-fluid task-panel-list mt-5 widget card shadow">
+        <table class="table table-bordered project-task-table mt-3">
             <thead>
                 <tr>
                     <th scope="col"><input type="checkbox"></th>
@@ -109,7 +151,7 @@
             </thead>
 
             <tbody>
-                {% for task in tasks %}
+                {% for task in project.task_set.all %}
                 {% if task.complete %}
                 {% else %}
                 <tr>
@@ -125,7 +167,7 @@
                     <td>{{task.deadline}}</td>
                     <td>{{user.username}}</td>
                     <td>{{task.executor}}</td>
-                    <td>{{task.project.name}}</td>
+                    <td>{{task.project}}</td>
                     <td>{{task.tags}}</td>
                 </tr>
                 {% endif %}
@@ -192,10 +234,5 @@
     </div>
 </div>
 
-
-{% include 'base/page/chatbot.html' %}
+    {% include 'base/page/chatbot.html' %}
 {% endblock pagecontent %}
-
-{% block scripts %}
-<script src={% static "to_do_list/js/to_do_list/hello_text.js" %}></script>
-{% endblock scripts %}

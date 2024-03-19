@@ -202,7 +202,8 @@
     background-color: var(--color-choice-green);
 }
 
-.COLOR_CHOICE_GREEN p, .COLOR_CHOICE_DEEP_BLUE p, .COLOR_CHOICE_BLUE p, .COLOR_CHOICE_LIGHT_YELLOW p, .COLOR_CHOICE_ORANGE p {
+/*Текст внутри блоков*/
+.COLOR_CHOICE_GREEN p, .COLOR_CHOICE_DEEP_BLUE p, .COLOR_CHOICE_BLUE p, .COLOR_CHOICE_LIGHT_YELLOW p, .COLOR_CHOICE_ORANGE p{
     color: var(--white-element-color);
 }
 
@@ -243,4 +244,22 @@
 }
 
 
+/*СТРАНИЦА РАБОТЫ С КОНКРЕТНЫМ ПРОЕКТОМ*/
+.fa-folder {
+    color: var(--white-element-color);
+}
+.detail-project-name h3 {
+    color: var(--white-element-color);
+}
 
+.status-project h4 {
+    color: var(--white-element-color);
+}
+
+.status-project .done {
+    color: var(--succes-color-green)
+}
+
+.status-project .in-work {
+    color: var(--danger-color-orange);
+}

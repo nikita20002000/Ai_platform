@@ -161,3 +161,21 @@ class ProjectUpdate(LoginRequiredMixin, UpdateView):
     ]
     success_url = reverse_lazy('to_do_list:project-list')
 
+
+
+class ProjectPage(LoginRequiredMixin, DetailView):
+    model = Project
+
+    template_name = 'projects/project_page.html'
+
+    fields = [
+        'name',
+        'description',
+        'complete',
+        'project_color',
+
+    ]
+
+
+
+
